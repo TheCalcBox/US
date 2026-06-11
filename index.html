@@ -253,6 +253,33 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
       "applicationCategory": "FinanceApplication",
       "operatingSystem": "Web",
       "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Tip Calculator",
+      "url": "https://thecalcbox.github.io/US/#tip",
+      "description": "Calculate tip amount and split bill between multiple people. Supports custom tip percentages for restaurants, bars, delivery, and more.",
+      "applicationCategory": "UtilityApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Student Loan Calculator",
+      "url": "https://thecalcbox.github.io/US/#studentloan",
+      "description": "Calculate monthly payments, total interest, and payoff timeline for federal and private student loans. Includes extra payment savings calculator.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Credit Card Payoff Calculator",
+      "url": "https://thecalcbox.github.io/US/#ccpayoff",
+      "description": "Calculate how long it takes to pay off credit card debt and total interest paid. Compare fixed payment vs target payoff date strategies.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
     }
   ]
 }
@@ -288,6 +315,26 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
       "@type": "Question",
       "name": "How much should I contribute to my 401(k)?",
       "acceptedAnswer": { "@type": "Answer", "text": "At minimum, contribute enough to capture your full employer match — it's free money. The general recommendation is to save 15% of your income for retirement (including employer contributions). The 2024 IRS limit is $23,000 ($30,500 if age 50+)." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much should you tip at a restaurant in the US?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Standard tipping in the US: 15% for average service, 18–20% for good service, 20–25% for excellent service. In major cities like NYC, LA, and SF, 20% has become the baseline expectation. Tip is typically calculated on the pre-tax subtotal, though many people tip on the full amount." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the average student loan debt in the US?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The average federal student loan debt for borrowers is approximately $37,000 as of 2024. Total US student loan debt exceeds $1.7 trillion. Federal loan interest rates for 2024-25 range from 6.53% (undergraduate) to 9.08% (PLUS loans). Income-driven repayment plans cap payments at 5-10% of discretionary income." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the average credit card interest rate in the US?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The average US credit card APR reached a record 24.37% in 2024. Rates vary widely: excellent credit (750+) may qualify for 15-19% APR, while fair credit may face 25-29%. Store cards and subprime cards can exceed 30% APR. Always pay in full monthly to avoid interest charges." }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I pay off credit card debt fast?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Top strategies: 1) Avalanche method - pay minimums on all cards, put extra money toward highest APR card first (saves most money). 2) Snowball method - pay off smallest balance first for psychological wins. 3) Balance transfer to 0% APR card. 4) Personal loan consolidation at lower rate. Even an extra $50-100/month can dramatically reduce payoff time." }
     }
   ]
 }
@@ -327,6 +374,9 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
     <button class="tab-btn f" onclick="switchTab('f','mortgage')" id="tab-mortgage">🏠 Mortgage</button>
     <button class="tab-btn f" onclick="switchTab('f','k401')"     id="tab-k401">👴 401(k)</button>
     <button class="tab-btn f" onclick="switchTab('f','tax')"      id="tab-tax">📋 Tax</button>
+    <button class="tab-btn f" onclick="switchTab('f','tip')"        id="tab-tip">🍽️ Tip</button>
+    <button class="tab-btn f" onclick="switchTab('f','studentloan')" id="tab-studentloan">🎓 Student Loan</button>
+    <button class="tab-btn f" onclick="switchTab('f','ccpayoff')"    id="tab-ccpayoff">💳 Card Payoff</button>
   </div>
 </div>
 
@@ -721,6 +771,161 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
     </div></div>
   </div>
 
+
+  <!-- Tip Calculator -->
+  <div class="panel" id="panel-tip">
+    <div class="tool-card"><div class="card-head">
+      <h2>Tip Calculator</h2>
+      <p>Calculate tip amount and total bill per person. Supports splitting between multiple people.</p>
+    </div><div class="card-body">
+      <div class="fields">
+        <div class="field"><label>Bill Amount ($)</label><input type="number" id="tip-bill" placeholder="e.g. 85.50" step="0.01" inputmode="decimal"></div>
+        <div class="field"><label>Tip Percentage</label>
+          <select id="tip-pct">
+            <option value="10">10% (Poor service)</option>
+            <option value="15">15% (Average)</option>
+            <option value="18">18% (Good)</option>
+            <option value="20" selected>20% (Great)</option>
+            <option value="25">25% (Excellent)</option>
+            <option value="custom">Custom %</option>
+          </select>
+        </div>
+        <div class="field" id="tip-custom-row" style="display:none"><label>Custom Tip %</label><input type="number" id="tip-custom" placeholder="e.g. 22" inputmode="numeric"></div>
+        <div class="field"><label>Split Between</label>
+          <select id="tip-split">
+            <option value="1" selected>1 person (no split)</option>
+            <option value="2">2 people</option>
+            <option value="3">3 people</option>
+            <option value="4">4 people</option>
+            <option value="5">5 people</option>
+            <option value="6">6 people</option>
+            <option value="8">8 people</option>
+            <option value="10">10 people</option>
+          </select>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcTip()">Calculate Tip</button>
+      <div class="result" id="tip-result">
+        <div class="result-top"><div class="result-number" id="tip-per-person">—</div><div class="result-unit">per person</div></div>
+        <div class="result-grid">
+          <div class="result-cell"><div class="lbl">Tip Amount</div><div class="val" id="tip-amount">—</div></div>
+          <div class="result-cell"><div class="lbl">Total Bill</div><div class="val" id="tip-total">—</div></div>
+          <div class="result-cell"><div class="lbl">Tip Per Person</div><div class="val" id="tip-pp">—</div></div>
+          <div class="result-cell"><div class="lbl">Total Per Person</div><div class="val green" id="tip-total-pp">—</div></div>
+        </div>
+        <div class="result-note" id="tip-note"></div>
+        <div class="result-disclaimer">For reference only.</div>
+      </div>
+      <div class="seo-box">
+        <h3>How Much Should You Tip? US Tipping Guide</h3>
+        <p>Tipping customs in the US: Restaurants: 15–20% for sit-down dining, 10% for buffets. Bars: $1–2 per drink or 15–20%. Delivery: 10–15% (minimum $2–5). Taxi/Rideshare: 15–20%. Hotel housekeeping: $2–5/night. Salon/spa: 15–20%.</p>
+        <p>Tip is calculated on the pre-tax amount, though many people tip on the total. In states with higher cost of living (NYC, LA, SF), 20%+ has become the standard. Counter service and coffee shops: optional but appreciated.</p>
+        <div class="seo-faq">
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: Is tipping mandatory in the US?</div><div class="seo-faq-a">A: Legally no, but culturally expected for most service industries. Many restaurant workers earn below minimum wage and rely on tips for most of their income. Gratuity may be automatically added for large groups (usually 6+).</div></div>
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: Should I tip on the pre-tax or post-tax amount?</div><div class="seo-faq-a">A: Technically, tip etiquette suggests tipping on the pre-tax amount. In practice, many people tip on the total for simplicity — the difference is usually minor.</div></div>
+        </div>
+      </div>
+      <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="4006" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </div></div>
+  </div>
+
+  <!-- Student Loan Calculator -->
+  <div class="panel" id="panel-studentloan">
+    <div class="tool-card"><div class="card-head">
+      <h2>Student Loan Calculator</h2>
+      <p>Calculate monthly payments, total interest, and payoff timeline for federal and private student loans.</p>
+    </div><div class="card-body">
+      <div class="fields">
+        <div class="field"><label>Total Loan Balance ($)</label><input type="number" id="sl-balance" placeholder="e.g. 35000" inputmode="numeric"></div>
+        <div class="field"><label>Annual Interest Rate (%)</label><input type="number" id="sl-rate" placeholder="e.g. 6.5" step="0.01" value="6.5" inputmode="decimal"></div>
+        <div class="field"><label>Repayment Plan</label>
+          <select id="sl-plan">
+            <option value="120">Standard (10 years)</option>
+            <option value="180">Extended (15 years)</option>
+            <option value="240">Extended (20 years)</option>
+            <option value="300">Extended (25 years)</option>
+          </select>
+        </div>
+        <div class="field"><label>Loan Type</label>
+          <select id="sl-type">
+            <option value="federal">Federal Loan</option>
+            <option value="private">Private Loan</option>
+          </select>
+        </div>
+      </div>
+      <div class="fields one">
+        <div class="field"><label>Extra Monthly Payment ($, optional)</label><input type="number" id="sl-extra" placeholder="e.g. 100" value="0" inputmode="numeric"></div>
+      </div>
+      <button class="calc-btn" onclick="calcStudentLoan()">Calculate Payments</button>
+      <div class="result" id="studentloan-result">
+        <div class="result-top"><div class="result-number" id="sl-monthly">—</div><div class="result-unit">/ month</div></div>
+        <div class="result-grid">
+          <div class="result-cell"><div class="lbl">Total Interest Paid</div><div class="val red" id="sl-interest">—</div></div>
+          <div class="result-cell"><div class="lbl">Total Amount Paid</div><div class="val" id="sl-total">—</div></div>
+          <div class="result-cell"><div class="lbl">Payoff Time</div><div class="val" id="sl-time">—</div></div>
+          <div class="result-cell"><div class="lbl">Interest Saved (Extra)</div><div class="val green" id="sl-saved">—</div></div>
+        </div>
+        <div class="result-note" id="sl-note"></div>
+        <div class="result-disclaimer">Estimates only. Federal loan rates and IDR plans may differ. Visit studentaid.gov for official repayment options.</div>
+      </div>
+      <div class="seo-box">
+        <h3>US Student Loan Repayment: Everything You Need to Know</h3>
+        <p>Federal student loan interest rates for 2024–25: Undergraduate Direct Subsidized/Unsubsidized: 6.53%, Graduate Direct Unsubsidized: 8.08%, Direct PLUS Loans: 9.08%. Private loan rates vary widely (4–16%) based on credit score. Federal loans offer income-driven repayment (IDR) plans, deferment, and Public Service Loan Forgiveness (PSLF).</p>
+        <p>Repayment options: Standard (10 years), Graduated (starts low, increases), Income-Driven (SAVE, PAYE, IBR — payments based on income, forgiveness after 10–25 years). Always exhaust federal options before considering private refinancing.</p>
+        <div class="seo-faq">
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: Should I pay off student loans or invest?</div><div class="seo-faq-a">A: If your loan rate is below 6–7%, consider investing in index funds (historical ~7–10% returns) while making minimum payments. If above 7%, prioritize paying down debt. Always get the full 401(k) employer match first — it's a guaranteed 50–100% return.</div></div>
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: What is PSLF (Public Service Loan Forgiveness)?</div><div class="seo-faq-a">A: PSLF forgives remaining federal loan balance after 120 qualifying payments (10 years) while working full-time for a government or non-profit employer. You must be on an IDR plan. Apply through studentaid.gov and submit annual employment certifications.</div></div>
+        </div>
+      </div>
+      <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="4007" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </div></div>
+  </div>
+
+  <!-- Credit Card Payoff -->
+  <div class="panel" id="panel-ccpayoff">
+    <div class="tool-card"><div class="card-head">
+      <h2>Credit Card Payoff Calculator</h2>
+      <p>Find out how long it takes to pay off your credit card debt and how much interest you'll pay. Compare strategies.</p>
+    </div><div class="card-body">
+      <div class="fields">
+        <div class="field"><label>Current Balance ($)</label><input type="number" id="cc-balance" placeholder="e.g. 5000" inputmode="numeric"></div>
+        <div class="field"><label>Annual Interest Rate / APR (%)</label><input type="number" id="cc-apr" placeholder="e.g. 24.99" step="0.01" value="24.99" inputmode="decimal"></div>
+        <div class="field"><label>Payment Strategy</label>
+          <select id="cc-strategy" onchange="toggleCCStrategy()">
+            <option value="fixed">Fixed Monthly Payment</option>
+            <option value="target">Target Payoff Date</option>
+          </select>
+        </div>
+        <div class="field" id="cc-fixed-row"><label>Monthly Payment ($)</label><input type="number" id="cc-payment" placeholder="e.g. 200" inputmode="numeric"></div>
+      </div>
+      <div class="fields one" id="cc-target-row" style="display:none">
+        <div class="field"><label>Pay Off In (months)</label><input type="number" id="cc-months" placeholder="e.g. 24" inputmode="numeric"></div>
+      </div>
+      <button class="calc-btn" onclick="calcCCPayoff()">Calculate Payoff</button>
+      <div class="result" id="ccpayoff-result">
+        <div class="result-top"><div class="result-number" id="ccp-monthly">—</div><div class="result-unit">/ month needed</div></div>
+        <div class="result-grid">
+          <div class="result-cell"><div class="lbl">Total Interest Paid</div><div class="val red" id="ccp-interest">—</div></div>
+          <div class="result-cell"><div class="lbl">Total Amount Paid</div><div class="val" id="ccp-total">—</div></div>
+          <div class="result-cell"><div class="lbl">Payoff Time</div><div class="val" id="ccp-time">—</div></div>
+          <div class="result-cell"><div class="lbl">Min Payment Trap</div><div class="val red" id="ccp-minpay">—</div></div>
+        </div>
+        <div class="result-note" id="ccp-note"></div>
+        <div class="result-disclaimer">Estimates only. Actual payoff depends on fees, rate changes, and payment timing. Contact your card issuer for exact figures.</div>
+      </div>
+      <div class="seo-box">
+        <h3>Credit Card Debt: How to Pay It Off Faster</h3>
+        <p>The average US credit card APR hit a record 24.37% in 2024. At this rate, a $5,000 balance making only minimum payments (~2% of balance) would take over 20 years and cost more than $7,000 in interest alone. The avalanche method (pay highest APR first) saves the most money; the snowball method (pay smallest balance first) provides psychological momentum.</p>
+        <p>Strategies to accelerate payoff: Balance transfer to a 0% APR card (12–21 months intro period, 3–5% transfer fee), personal loan at lower rate, biweekly payments instead of monthly (one extra payment per year). Even $50 extra per month can shave years off your payoff timeline.</p>
+        <div class="seo-faq">
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: Should I do a balance transfer to pay off credit card debt?</div><div class="seo-faq-a">A: If you can qualify for a 0% APR balance transfer card and pay off the balance before the intro period ends, it's often the best strategy. Watch for the transfer fee (3–5%) and don't add new purchases to the card. Requires good credit (typically 670+ FICO).</div></div>
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: Does paying more than the minimum really make a big difference?</div><div class="seo-faq-a">A: Dramatically. On a $5,000 balance at 24.99% APR: minimum payments only takes 15+ years and costs $6,300 in interest. Paying $200/month takes 3 years and costs $1,800 in interest. Paying $300/month takes under 2 years and costs $1,100 in interest.</div></div>
+        </div>
+      </div>
+      <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="4008" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </div></div>
+  </div>
+
 </div><!-- /cat-finance -->
 </div><!-- /wrap -->
 
@@ -1064,6 +1269,100 @@ function shareResult(toolId, label) {
       setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('share-copied'); }, 2000);
     });
   }
+}
+
+
+/* ══ Tip ══ */
+document.getElementById('tip-pct').addEventListener('change', function(){
+  document.getElementById('tip-custom-row').style.display = this.value==='custom' ? 'flex' : 'none';
+});
+function calcTip(){
+  const bill = parseFloat(document.getElementById('tip-bill').value);
+  if(!bill){alert('Please enter the bill amount');return;}
+  const pctSel = document.getElementById('tip-pct').value;
+  const pct = pctSel==='custom' ? parseFloat(document.getElementById('tip-custom').value)||20 : parseFloat(pctSel);
+  const split = parseInt(document.getElementById('tip-split').value);
+  const tipAmt = bill * pct / 100;
+  const total = bill + tipAmt;
+  const perPerson = total / split;
+  const tipPP = tipAmt / split;
+  const fmt = v => '$' + v.toFixed(2);
+  document.getElementById('tip-per-person').textContent = fmt(perPerson);
+  document.getElementById('tip-amount').textContent = fmt(tipAmt);
+  document.getElementById('tip-total').textContent = fmt(total);
+  document.getElementById('tip-pp').textContent = fmt(tipPP);
+  document.getElementById('tip-total-pp').textContent = fmt(perPerson);
+  document.getElementById('tip-note').textContent = `Bill: ${fmt(bill)} + ${pct}% tip (${fmt(tipAmt)}) = ${fmt(total)} total${split>1 ? `, split ${split} ways = ${fmt(perPerson)} per person (${fmt(tipPP)} tip each)` : ''}.`;
+  document.getElementById('tip-result').classList.add('show');
+}
+
+/* ══ Student Loan ══ */
+function calcStudentLoan(){
+  const balance = parseFloat(document.getElementById('sl-balance').value);
+  const rate = parseFloat(document.getElementById('sl-rate').value) / 100 / 12;
+  const months = parseInt(document.getElementById('sl-plan').value);
+  const extra = parseFloat(document.getElementById('sl-extra').value) || 0;
+  if(!balance || !rate){alert('Please fill in all fields');return;}
+  // Standard payment
+  const monthly = balance * rate * Math.pow(1+rate, months) / (Math.pow(1+rate, months) - 1);
+  const totalPaid = monthly * months;
+  const totalInterest = totalPaid - balance;
+  // With extra payment
+  let bal2 = balance, m2 = 0, int2 = 0;
+  const monthlyExtra = monthly + extra;
+  while(bal2 > 0 && m2 < 600){
+    const intCharge = bal2 * rate;
+    const principal = Math.min(monthlyExtra - intCharge, bal2);
+    bal2 -= principal; int2 += intCharge; m2++;
+  }
+  const saved = extra > 0 ? Math.round(totalInterest - int2) : 0;
+  const yrs = Math.floor(months/12), mos = months%12;
+  const yrs2 = Math.floor(m2/12), mos2 = m2%12;
+  document.getElementById('sl-monthly').textContent = '$' + monthly.toFixed(2);
+  document.getElementById('sl-interest').textContent = '$' + Math.round(totalInterest).toLocaleString();
+  document.getElementById('sl-total').textContent = '$' + Math.round(totalPaid).toLocaleString();
+  document.getElementById('sl-time').textContent = extra > 0 ? `${yrs2}y ${mos2}m (was ${yrs}y ${mos}m)` : `${yrs}y ${mos}m`;
+  document.getElementById('sl-saved').textContent = extra > 0 ? '$' + saved.toLocaleString() + ' saved' : 'Add extra payment';
+  document.getElementById('sl-note').textContent = `Loan: $${balance.toLocaleString()} at ${document.getElementById('sl-rate').value}% APR. Standard payment: $${monthly.toFixed(2)}/mo for ${yrs} years, total interest $${Math.round(totalInterest).toLocaleString()}.${extra > 0 ? ` Adding $${extra}/mo extra: paid off in ${yrs2}y ${mos2}m, saving $${saved.toLocaleString()} in interest.` : ' Add extra payments to save significantly on interest.'}`;
+  document.getElementById('studentloan-result').classList.add('show');
+}
+
+/* ══ Credit Card Payoff ══ */
+function toggleCCStrategy(){
+  const s = document.getElementById('cc-strategy').value;
+  document.getElementById('cc-fixed-row').style.display = s==='fixed' ? 'flex' : 'none';
+  document.getElementById('cc-target-row').style.display = s==='target' ? 'grid' : 'none';
+}
+function calcCCPayoff(){
+  const balance = parseFloat(document.getElementById('cc-balance').value);
+  const apr = parseFloat(document.getElementById('cc-apr').value) / 100 / 12;
+  const strategy = document.getElementById('cc-strategy').value;
+  if(!balance || !apr){alert('Please enter balance and APR');return;}
+  let monthly, months, totalInterest;
+  if(strategy === 'fixed'){
+    monthly = parseFloat(document.getElementById('cc-payment').value);
+    if(!monthly || monthly <= balance * apr){alert('Monthly payment must be greater than monthly interest charge ($' + (balance*apr).toFixed(2) + ')');return;}
+    let bal = balance, m = 0, interest = 0;
+    while(bal > 0.01 && m < 600){ const intCharge = bal*apr; bal -= (monthly-intCharge); interest += intCharge; m++; if(bal<0)bal=0; }
+    months = m; totalInterest = interest;
+  } else {
+    months = parseInt(document.getElementById('cc-months').value);
+    if(!months){alert('Please enter target months');return;}
+    monthly = balance * apr * Math.pow(1+apr,months) / (Math.pow(1+apr,months)-1);
+    totalInterest = monthly*months - balance;
+  }
+  // Min payment comparison (2% of balance)
+  const minPay = Math.max(balance*0.02, 25);
+  let minBal=balance, minM=0, minInt=0;
+  while(minBal>0.01&&minM<600){const ic=minBal*apr;const mp=Math.max(minBal*0.02,25);minBal-=(mp-ic);minInt+=ic;minM++;if(minBal<0)minBal=0;}
+  const yrs=Math.floor(months/12),mos=months%12;
+  document.getElementById('ccp-monthly').textContent='$'+monthly.toFixed(2);
+  document.getElementById('ccp-interest').textContent='$'+Math.round(totalInterest).toLocaleString();
+  document.getElementById('ccp-total').textContent='$'+Math.round(balance+totalInterest).toLocaleString();
+  document.getElementById('ccp-time').textContent=yrs>0?`${yrs}y ${mos}m`:`${mos} months`;
+  document.getElementById('ccp-minpay').textContent=`$${Math.round(minInt).toLocaleString()} interest in ${Math.floor(minM/12)}y`;
+  document.getElementById('ccp-note').textContent=`Balance: $${balance.toLocaleString()} at ${document.getElementById('cc-apr').value}% APR. Paying $${monthly.toFixed(2)}/mo: paid off in ${yrs>0?yrs+'y '+mos+'m':mos+' months'}, total interest $${Math.round(totalInterest).toLocaleString()}. Vs minimum payments: $${Math.round(minInt).toLocaleString()} interest over ${Math.floor(minM/12)} years — you save $${Math.round(minInt-totalInterest).toLocaleString()} with this plan.`;
+  document.getElementById('ccpayoff-result').classList.add('show');
 }
 
 window.addEventListener('load',()=>loadHealthNews());
