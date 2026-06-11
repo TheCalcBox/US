@@ -1,92 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-  <!-- Home -->
-  <url>
-    <loc>https://thecalcbox.github.io/US/</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <!-- Health News -->
-  <url>
-    <loc>https://thecalcbox.github.io/US/#hnews</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- BMI Calculator -->
-  <url>
-    <loc>https://thecalcbox.github.io/US/#bmi</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Calorie / TDEE Calculator -->
-  <url>
-    <loc>https://thecalcbox.github.io/US/#tdee</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Water Intake Calculator -->
-  <url>
-    <loc>https://thecalcbox.github.io/US/#water</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Age Calculator -->
-  <url>
-    <loc>https://thecalcbox.github.io/US/#age</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Sleep Calculator -->
-  <url>
-    <loc>https://thecalcbox.github.io/US/#sleep</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Finance News -->
-  <url>
-    <loc>https://thecalcbox.github.io/US/#fnews</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.9</priority>
-  </url>
-
-  <!-- Mortgage Calculator -->
-  <url>
-    <loc>https://thecalcbox.github.io/US/#mortgage</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- 401k Calculator -->
-  <url>
-    <loc>https://thecalcbox.github.io/US/#k401</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
-  <!-- Federal Tax Calculator -->
-  <url>
-    <loc>https://thecalcbox.github.io/US/#tax</loc>
-    <lastmod>2026-06-11</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.8</priority>
-  </url>
-
+  <url><loc>https://thecalcbox.github.io/US/</loc><lastmod>2026-06-11</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://thecalcbox.github.io/US/#hnews</loc><lastmod>2026-06-11</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://thecalcbox.github.io/US/#fnews</loc><lastmod>2026-06-11</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>
+  <url><loc>https://thecalcbox.github.io/US/#bmi</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://thecalcbox.github.io/US/#tdee</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://thecalcbox.github.io/US/#water</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thecalcbox.github.io/US/#age</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thecalcbox.github.io/US/#sleep</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://thecalcbox.github.io/US/#mortgage</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://thecalcbox.github.io/US/#k401</loc><lastmod>2026-06-11</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://thecalcbox.github.io/US/#tax</loc><lastmod>2026-06-11</lastmod><changefreq>yearly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://thecalcbox.github.io/US/#tip</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://thecalcbox.github.io/US/#studentloan</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://thecalcbox.github.io/US/#ccpayoff</loc><lastmod>2026-06-11</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>
 </urlset>
