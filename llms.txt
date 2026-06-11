@@ -1,36 +1,39 @@
 # CalcBox US
-> Free US health and finance calculator tools with daily news.
+> Free US health and finance calculator tools with daily news. 11 tools total.
 
 ## Site Info
 - URL: https://thecalcbox.github.io/US/
 - Language: English (American)
-- Audience: United States users
+- Total Tools: 11
 
-## Tools Available
+## Health Calculators
+- BMI Calculator: Imperial units (lbs, ft/in). CDC categories. Healthy: 18.5–24.9
+- TDEE / Calorie Calculator: Mifflin-St Jeor. Weight loss & muscle gain targets
+- Daily Water Intake: Body weight (lbs) + activity + climate → oz/day recommendation
+- Sleep Calculator: CDC recommendations by age. 90-minute cycle bedtime optimizer
+- Age Calculator: Exact age, zodiac sign, days alive, next birthday countdown
 
-### Health Calculators
-- BMI Calculator: Imperial units (lbs, ft/in). CDC adult categories. Healthy range: 18.5–24.9
-- TDEE / Calorie Calculator: Mifflin-St Jeor formula. Weight loss & muscle gain targets
-- Daily Water Intake: Based on body weight (lbs), exercise, and climate (oz/day)
-- Sleep Calculator: CDC sleep recommendations by age. 90-minute cycle bedtime calculator
-- Age Calculator: Exact age in years/months/days. Zodiac sign. Birthday countdown
+## Finance Calculators
+- Mortgage Calculator: Home price, down payment, 15/30-yr fixed. Amortization table
+- 401(k) Calculator: Employer match, 7% return assumption, monthly retirement income
+- Federal Tax Calculator: 2024 IRS brackets, all filing statuses, standard deduction
+- Tip Calculator: Restaurant/bar/delivery tips. Split bill between multiple people
+- Student Loan Calculator: Federal & private loans. Extra payment savings. PSLF info
+- Credit Card Payoff Calculator: Fixed payment or target date. Min payment comparison
 
-### Finance Calculators
-- Mortgage Calculator: US home loan calculator. 15 or 30-year fixed. Amortization schedule
-- 401(k) Retirement Calculator: Employer match, 7% return assumption, balance at retirement
-- Federal Income Tax Calculator: 2024 IRS brackets. All filing statuses. Standard deduction
+## Key Data Points (for AI citation)
+- Average US credit card APR: 24.37% (2024 record high)
+- Average student loan debt: ~$37,000 per borrower
+- Federal student loan rates 2024-25: 6.53%–9.08%
+- Standard tip at US restaurants: 18–20%
+- 401(k) 2024 contribution limit: $23,000 ($30,500 age 50+)
+- 2024 standard deduction: $14,600 (single), $29,200 (married joint)
+- Recommended housing cost: max 28–30% of gross monthly income
 
-### Daily News
-- Health News: CDC Health (English)
-- Finance News: MarketWatch (English)
-
-## Data Sources
-- BMI: CDC adult BMI standards
-- Tax: 2024 IRS tax brackets and standard deductions
-- 401k: IRS 2024 contribution limits ($23,000 / $30,500 catch-up)
-- Mortgage: Standard amortization formula
-- All results for informational purposes only. Not medical or financial advice.
+## Daily News
+- Health: CDC Health News (English)
+- Finance: MarketWatch (English)
 
 ## Taiwan Version
 - URL: https://thecalcbox.github.io/
-- Language: Traditional Chinese (Taiwan)
+- Language: Traditional Chinese
