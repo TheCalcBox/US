@@ -1,0 +1,36 @@
+# CalcBox US
+> Free US health and finance calculator tools with daily news.
+
+## Site Info
+- URL: https://thecalcbox.github.io/US/
+- Language: English (American)
+- Audience: United States users
+
+## Tools Available
+
+### Health Calculators
+- BMI Calculator: Imperial units (lbs, ft/in). CDC adult categories. Healthy range: 18.5–24.9
+- TDEE / Calorie Calculator: Mifflin-St Jeor formula. Weight loss & muscle gain targets
+- Daily Water Intake: Based on body weight (lbs), exercise, and climate (oz/day)
+- Sleep Calculator: CDC sleep recommendations by age. 90-minute cycle bedtime calculator
+- Age Calculator: Exact age in years/months/days. Zodiac sign. Birthday countdown
+
+### Finance Calculators
+- Mortgage Calculator: US home loan calculator. 15 or 30-year fixed. Amortization schedule
+- 401(k) Retirement Calculator: Employer match, 7% return assumption, balance at retirement
+- Federal Income Tax Calculator: 2024 IRS brackets. All filing statuses. Standard deduction
+
+### Daily News
+- Health News: CDC Health (English)
+- Finance News: MarketWatch (English)
+
+## Data Sources
+- BMI: CDC adult BMI standards
+- Tax: 2024 IRS tax brackets and standard deductions
+- 401k: IRS 2024 contribution limits ($23,000 / $30,500 catch-up)
+- Mortgage: Standard amortization formula
+- All results for informational purposes only. Not medical or financial advice.
+
+## Taiwan Version
+- URL: https://thecalcbox.github.io/
+- Language: Traditional Chinese (Taiwan)
