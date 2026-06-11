@@ -151,6 +151,22 @@ header{background:var(--slate);padding:0 1.5rem;position:sticky;top:0;z-index:30
 .seo-faq-q{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
 .seo-faq-a{font-size:12px;color:var(--muted);line-height:1.7}
 
+
+/* ── Daily Tips ── */
+.tips-box{background:linear-gradient(135deg,#F0FDF4,#ECFDF5);border:1px solid #6EE7B7;border-radius:var(--radius);padding:1.1rem 1.25rem;margin-bottom:1.25rem;display:flex;gap:14px;align-items:flex-start}
+.tips-icon{font-size:24px;flex-shrink:0;margin-top:2px}
+.tips-label{font-size:10px;font-weight:700;color:var(--green);letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+.tips-text{font-size:14px;font-weight:700;color:var(--text);line-height:1.55;margin-bottom:4px}
+.tips-sub{font-size:12px;color:var(--muted);line-height:1.6}
+.tips-box-finance{background:linear-gradient(135deg,#EFF6FF,#DBEAFE);border-color:#93C5FD}
+.tips-label-finance{color:var(--blue-mid)}
+
+
+/* ── Share ── */
+.share-btn{display:flex;align-items:center;gap:6px;margin-top:10px;padding:8px 14px;font-size:12px;font-weight:700;border:1.5px solid var(--border);border-radius:var(--radius-sm);background:var(--white);cursor:pointer;color:var(--muted);font-family:inherit;transition:all .15s;width:fit-content;letter-spacing:.02em}
+.share-btn:hover{border-color:var(--green);color:var(--green);background:#F0FDF4}
+.share-copied{border-color:var(--green)!important;color:var(--green)!important;background:#F0FDF4!important}
+
 /* ── Footer ── */
 footer{background:var(--slate);padding:1.5rem;text-align:center}
 footer p{font-size:12px;color:rgba(255,255,255,.35);line-height:1.8}
@@ -165,6 +181,118 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
   .cat-btn{font-size:13px}
 }
 </style>
+
+<!-- Open Graph -->
+<meta property="og:title" content="CalcBox US — Free Health & Finance Calculators">
+<meta property="og:description" content="Free US calculators: BMI, Calories (TDEE), Water intake, Sleep advisor, Mortgage, 401(k), Federal Income Tax. Daily health & finance news.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://thecalcbox.github.io/US/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CalcBox US — Free Health & Finance Calculators">
+<meta name="twitter:description" content="Free US calculators: BMI, TDEE, Water intake, Sleep, Mortgage, 401(k), Federal Tax. Localized for American users.">
+
+<!-- Schema: WebSite -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "CalcBox US",
+  "url": "https://thecalcbox.github.io/US/",
+  "description": "Free US health and finance calculators: BMI, TDEE, water intake, sleep advisor, mortgage, 401(k) retirement, and federal income tax. Daily health and finance news.",
+  "inLanguage": "en-US"
+}
+</script>
+
+<!-- Schema: WebApplication Collection -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "BMI Calculator",
+      "url": "https://thecalcbox.github.io/US/#bmi",
+      "description": "Calculate your BMI using imperial units (lbs, ft/in). Uses CDC adult BMI categories: Underweight, Healthy, Overweight, Obese.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Daily Calorie Calculator (TDEE)",
+      "url": "https://thecalcbox.github.io/US/#tdee",
+      "description": "Calculate your Total Daily Energy Expenditure using Mifflin-St Jeor formula with imperial units. Includes weight loss and muscle gain targets.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "WebApplication",
+      "name": "US Mortgage Calculator",
+      "url": "https://thecalcbox.github.io/US/#mortgage",
+      "description": "Calculate US mortgage monthly payments with amortization schedule. Supports 15 and 30-year fixed rate loans.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "WebApplication",
+      "name": "401(k) Retirement Calculator",
+      "url": "https://thecalcbox.github.io/US/#k401",
+      "description": "Estimate your 401(k) balance at retirement with employer match, assumes 7% annual return.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Federal Income Tax Calculator 2024",
+      "url": "https://thecalcbox.github.io/US/#tax",
+      "description": "Estimate your 2024 US federal income tax based on IRS tax brackets, filing status, and standard deduction.",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    }
+  ]
+}
+</script>
+
+<!-- Schema: FAQ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is a healthy BMI for adults?",
+      "acceptedAnswer": { "@type": "Answer", "text": "According to the CDC, a healthy BMI for adults is between 18.5 and 24.9. Underweight is below 18.5, overweight is 25.0–29.9, and obese is 30.0 and above." }
+    },
+    {
+      "@type": "Question",
+      "name": "How many calories should I eat per day?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Your daily calorie needs depend on your TDEE (Total Daily Energy Expenditure), which varies by age, sex, weight, height, and activity level. Use our TDEE calculator for a personalized estimate. The FDA uses 2,000 calories as a general reference." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much water should I drink a day?",
+      "acceptedAnswer": { "@type": "Answer", "text": "The National Academies recommends about 125 oz (3.7L) for men and 91 oz (2.7L) for women total daily water intake from all sources. A simple rule: drink about half your body weight in ounces per day." }
+    },
+    {
+      "@type": "Question",
+      "name": "What is the current US mortgage rate?",
+      "acceptedAnswer": { "@type": "Answer", "text": "As of 2024–2025, the average 30-year fixed mortgage rate in the US is approximately 6.5–7.5%. Rates vary by lender, credit score, and loan type. Check Freddie Mac's PMMS for current weekly average rates." }
+    },
+    {
+      "@type": "Question",
+      "name": "How much should I contribute to my 401(k)?",
+      "acceptedAnswer": { "@type": "Answer", "text": "At minimum, contribute enough to capture your full employer match — it's free money. The general recommendation is to save 15% of your income for retirement (including employer contributions). The 2024 IRS limit is $23,000 ($30,500 if age 50+)." }
+    }
+  ]
+}
+</script>
+
 </head>
 <body>
 
@@ -213,6 +341,15 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
       <div><div class="news-title">Daily Health News</div><div class="news-meta" id="hnews-date">Loading...</div></div>
       <button class="refresh-btn" onclick="loadHealthNews()" id="hrefresh-btn"><span id="hrefresh-icon">↻</span> Refresh</button>
     </div>
+
+    <div class="tips-box">
+      <div class="tips-icon">💧</div>
+      <div class="tips-content">
+        <div class="tips-label">Today's Health Tip</div>
+        <div class="tips-text">Start your day with a glass of water</div>
+        <div class="tips-sub">You lose water overnight through breathing. Drinking 8–16 oz of water first thing in the morning jumpstarts metabolism and helps with morning alertness.</div>
+      </div>
+    </div>
     <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="3001" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
     <div id="hnews-container" style="margin-top:1.25rem"></div>
     <div class="ad-slot" style="margin-top:1rem"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="3002" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -220,7 +357,7 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
   </div>
 
   <!-- BMI -->
-  <div class="panel" id="panel-bmi">
+  <div class="panel" id="panel-bmi" data-tool="bmi">
     <div class="tool-card"><div class="card-head">
       <h2>BMI Calculator</h2>
       <p>Calculate your Body Mass Index using US standard (imperial units). CDC healthy range: 18.5–24.9</p>
@@ -240,6 +377,13 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
           <div class="result-cell"><div class="lbl">From Ideal (mid)</div><div class="val" id="bmi-diff">—</div></div>
         </div>
         <div class="result-note" id="bmi-note"></div>
+        <button class="share-btn" onclick="shareResult('bmi','BMI Result')">📤 Share Result</button>
+        <button class="share-btn" onclick="shareResult('tdee','Daily Calorie Result')">📤 Share Result</button>
+        <button class="share-btn" onclick="shareResult('water','Water Intake Result')">📤 Share Result</button>
+        <button class="share-btn" onclick="shareResult('sleep','Sleep Result')">📤 Share Result</button>
+        <button class="share-btn" onclick="shareResult('mortgage','Mortgage Result')">📤 Share Result</button>
+        <button class="share-btn" onclick="shareResult('k401','401(k) Result')">📤 Share Result</button>
+        <button class="share-btn" onclick="shareResult('tax','Tax Result')">📤 Share Result</button>
         <div class="result-disclaimer">For reference only. Consult your doctor for medical advice.</div>
       </div>
 
@@ -257,7 +401,7 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
   </div>
 
   <!-- TDEE -->
-  <div class="panel" id="panel-tdee">
+  <div class="panel" id="panel-tdee" data-tool="tdee">
     <div class="tool-card"><div class="card-head">
       <h2>Daily Calorie Calculator (TDEE)</h2>
       <p>Estimate your Total Daily Energy Expenditure using the Mifflin-St Jeor formula. Includes weight loss & muscle gain targets.</p>
@@ -307,7 +451,7 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
   </div>
 
   <!-- Water -->
-  <div class="panel" id="panel-water">
+  <div class="panel" id="panel-water" data-tool="water">
     <div class="tool-card"><div class="card-head">
       <h2>Daily Water Intake Calculator</h2>
       <p>Calculate how many ounces of water you should drink daily based on your weight, activity, and climate.</p>
@@ -382,7 +526,7 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
   </div>
 
   <!-- Sleep -->
-  <div class="panel" id="panel-sleep">
+  <div class="panel" id="panel-sleep" data-tool="sleep">
     <div class="tool-card"><div class="card-head">
       <h2>Sleep Time Calculator</h2>
       <p>Based on CDC recommendations and 90-minute sleep cycles, find your ideal bedtime for your wake-up time.</p>
@@ -426,6 +570,15 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
       <div><div class="news-title">Daily Finance News</div><div class="news-meta" id="fnews-date">Loading...</div></div>
       <button class="refresh-btn" onclick="loadFinanceNews()" id="frefresh-btn"><span id="frefresh-icon">↻</span> Refresh</button>
     </div>
+
+    <div class="tips-box tips-box-finance">
+      <div class="tips-icon">📈</div>
+      <div class="tips-content">
+        <div class="tips-label tips-label-finance">Today's Finance Tip</div>
+        <div class="tips-text">Build a 6-month emergency fund first</div>
+        <div class="tips-sub">Before investing, save 3–6 months of expenses in a high-yield savings account (currently 4–5% APY). This prevents you from selling investments at the worst time.</div>
+      </div>
+    </div>
     <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="4001" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
     <div id="fnews-container" style="margin-top:1.25rem"></div>
     <div class="ad-slot" style="margin-top:1rem"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="4002" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
@@ -433,7 +586,7 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
   </div>
 
   <!-- Mortgage -->
-  <div class="panel" id="panel-mortgage">
+  <div class="panel" id="panel-mortgage" data-tool="mortgage">
     <div class="tool-card"><div class="card-head">
       <h2>US Mortgage Calculator</h2>
       <p>Calculate monthly payments, total interest, and amortization schedule for your US home loan.</p>
@@ -482,7 +635,7 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
   </div>
 
   <!-- 401k -->
-  <div class="panel" id="panel-k401">
+  <div class="panel" id="panel-k401" data-tool="k401">
     <div class="tool-card"><div class="card-head">
       <h2>401(k) Retirement Calculator</h2>
       <p>Estimate your 401(k) balance at retirement based on your contributions, employer match, and investment growth.</p>
@@ -523,7 +676,7 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
   </div>
 
   <!-- Federal Tax -->
-  <div class="panel" id="panel-tax">
+  <div class="panel" id="panel-tax" data-tool="tax">
     <div class="tool-card"><div class="card-head">
       <h2>Federal Income Tax Calculator</h2>
       <p>Estimate your 2024 US federal income tax based on IRS tax brackets, filing status, and standard deduction.</p>
@@ -893,6 +1046,26 @@ function calcTax(){
 }
 
 /* ══ Add feedburner domains to Worker ══ */
+
+/* ══ Share Result ══ */
+function shareResult(toolId, label) {
+  const resultEl = document.querySelector(`[data-tool="${toolId}"]`);
+  if (!resultEl) return;
+  const number = resultEl.querySelector('.result-number')?.textContent || '';
+  const unit = resultEl.querySelector('.result-unit')?.textContent || '';
+  const tag = resultEl.querySelector('.tag')?.textContent || '';
+  const text = `My ${label}: ${number} ${unit}${tag ? ' (' + tag + ')' : ''}\nFree calculator → https://thecalcbox.github.io/US`;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = event.target.closest('.share-btn');
+      const orig = btn.innerHTML;
+      btn.innerHTML = '✅ Copied!';
+      btn.classList.add('share-copied');
+      setTimeout(() => { btn.innerHTML = orig; btn.classList.remove('share-copied'); }, 2000);
+    });
+  }
+}
+
 window.addEventListener('load',()=>loadHealthNews());
 </script>
 </body>
