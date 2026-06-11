@@ -140,6 +140,17 @@ header{background:var(--slate);padding:0 1.5rem;position:sticky;top:0;z-index:30
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .news-error{text-align:center;padding:2.5rem 1rem;color:var(--muted);font-size:13px}
 
+
+/* ── SEO Content ── */
+.seo-box{margin-top:1.25rem;padding:1.25rem;background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm)}
+.seo-box h3{font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px;letter-spacing:-.1px}
+.seo-box p{font-size:13px;color:var(--muted);line-height:1.8;margin-bottom:8px}
+.seo-box p:last-child{margin-bottom:0}
+.seo-faq{margin-top:10px;border-top:1px solid var(--border);padding-top:10px}
+.seo-faq-item{margin-bottom:8px}
+.seo-faq-q{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
+.seo-faq-a{font-size:12px;color:var(--muted);line-height:1.7}
+
 /* ── Footer ── */
 footer{background:var(--slate);padding:1.5rem;text-align:center}
 footer p{font-size:12px;color:rgba(255,255,255,.35);line-height:1.8}
@@ -231,6 +242,16 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
         <div class="result-note" id="bmi-note"></div>
         <div class="result-disclaimer">For reference only. Consult your doctor for medical advice.</div>
       </div>
+
+      <div class="seo-box">
+        <h3>Understanding BMI: What Your Number Really Means</h3>
+        <p>Body Mass Index (BMI) is a simple screening tool used by the CDC and NIH to categorize weight status. It's calculated by dividing your weight in pounds by height in inches squared, then multiplying by 703. While BMI is a useful starting point, it doesn't directly measure body fat or account for muscle mass, bone density, age, or gender differences.</p>
+        <p>CDC adult BMI categories: Underweight (below 18.5), Healthy Weight (18.5–24.9), Overweight (25.0–29.9), Obese (30.0 and above). For most adults, a healthy BMI range corresponds to a lower risk of heart disease, type 2 diabetes, and high blood pressure.</p>
+        <div class="seo-faq">
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: Is BMI accurate for athletes or muscular people?</div><div class="seo-faq-a">A: Not always. BMI may overestimate body fat in athletes with high muscle mass. In these cases, body fat percentage measurement (DEXA scan, hydrostatic weighing) provides a more accurate picture.</div></div>
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: What's a healthy BMI for women vs men?</div><div class="seo-faq-a">A: The CDC uses the same BMI scale for both sexes (18.5–24.9 healthy). However, women typically have more body fat than men at the same BMI, so context matters — consult your doctor for a full assessment.</div></div>
+        </div>
+      </div>
       <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="3003" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
     </div></div>
   </div>
@@ -271,6 +292,16 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
         <div class="result-note" id="tdee-note"></div>
         <div class="result-disclaimer">For reference only. Consult a registered dietitian.</div>
       </div>
+
+      <div class="seo-box">
+        <h3>How Many Calories Should I Eat Per Day?</h3>
+        <p>Your Total Daily Energy Expenditure (TDEE) is the total number of calories you burn each day, including your Basal Metabolic Rate (BMR) plus the calories burned through physical activity and digesting food. The Mifflin-St Jeor equation used here is considered the most accurate formula for estimating BMR by the Academy of Nutrition and Dietetics.</p>
+        <p>General guidelines: To lose ~1 lb/week, create a 500 calorie/day deficit (eat at TDEE minus 500). To gain muscle, eat 250–500 calories above TDEE with consistent resistance training. The FDA's general reference intake is 2,000 calories/day for an average adult, but your actual needs may vary significantly.</p>
+        <div class="seo-faq">
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: How much protein do I need per day?</div><div class="seo-faq-a">A: The RDA recommends 0.36g per pound of body weight (0.8g/kg) as a minimum. For active individuals and those trying to build muscle or lose fat while preserving muscle, 0.7–1.0g per pound (1.6–2.2g/kg) is commonly recommended by sports nutrition research.</div></div>
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: Why is my TDEE different from what apps show?</div><div class="seo-faq-a">A: Different apps use different formulas (Harris-Benedict, Katch-McArdle, Mifflin-St Jeor). Results vary by 5–10%. Use any estimate as a starting point and adjust based on real-world results over 2–3 weeks.</div></div>
+        </div>
+      </div>
       <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="3004" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
     </div></div>
   </div>
@@ -310,6 +341,16 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
         </div>
         <div class="result-note" id="water-note"></div>
         <div class="result-disclaimer">For reference only. Consult your doctor if you have kidney concerns.</div>
+      </div>
+
+      <div class="seo-box">
+        <h3>How Much Water Should You Drink a Day?</h3>
+        <p>The National Academies of Sciences recommends about 3.7 liters (125 oz) of total water daily for men and 2.7 liters (91 oz) for women — this includes water from all beverages and foods. About 20% of water intake typically comes from food. The common "8 glasses a day" rule is a rough guideline; your actual needs depend on body weight, activity level, climate, and health status.</p>
+        <p>Signs you're well hydrated: light yellow urine, rarely feeling thirsty, urinating every 2–4 hours. Signs of dehydration: dark yellow or amber urine, fatigue, headache, dry mouth. In hot weather or during intense exercise, electrolyte replacement (sodium, potassium) is also important alongside water.</p>
+        <div class="seo-faq">
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: Does coffee count toward my daily water intake?</div><div class="seo-faq-a">A: Yes, contrary to popular belief, caffeinated drinks like coffee and tea do contribute to hydration. The mild diuretic effect is offset by the fluid content. However, they shouldn't replace plain water entirely.</div></div>
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: Can you drink too much water?</div><div class="seo-faq-a">A: Yes — overhydration (hyponatremia) can occur if you drink excessive amounts rapidly. Your kidneys can process about 27–33 oz (800–1000ml) per hour. Spread your intake throughout the day rather than drinking large amounts at once.</div></div>
+        </div>
       </div>
       <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="3005" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
     </div></div>
@@ -359,6 +400,16 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
         </div>
         <div class="result-note" id="sleep-note"></div>
         <div class="result-disclaimer">For reference only. Consult your doctor if you have sleep concerns.</div>
+      </div>
+
+      <div class="seo-box">
+        <h3>How Much Sleep Do You Really Need?</h3>
+        <p>The CDC recommends adults (18–60 years) get at least 7 hours of sleep per night. Teenagers need 8–10 hours, school-age children 9–12 hours. Chronic sleep deprivation is linked to obesity, heart disease, type 2 diabetes, mental health issues, and a weakened immune system. The American Academy of Sleep Medicine and Sleep Research Society both recommend 7–9 hours as optimal for adult health.</p>
+        <p>Sleep occurs in ~90-minute cycles of light sleep, deep sleep (slow-wave), and REM (rapid eye movement). Waking naturally at the end of a cycle — rather than mid-cycle — results in feeling more refreshed. The ideal bedroom temperature for sleep is 65–68°F (18–20°C).</p>
+        <div class="seo-faq">
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: Is it okay to "catch up" on sleep on weekends?</div><div class="seo-faq-a">A: Research suggests you can partially recover from acute sleep loss, but "social jetlag" from irregular sleep schedules can harm metabolic health. Consistent sleep and wake times — even on weekends — support better overall sleep quality.</div></div>
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: Do older adults need less sleep?</div><div class="seo-faq-a">A: The need for sleep doesn't significantly decrease with age, but sleep patterns often change. Older adults may wake more frequently or sleep lighter — but still need 7–9 hours. Consult a doctor if you consistently struggle to get enough sleep.</div></div>
+        </div>
       </div>
       <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="3007" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
     </div></div>
@@ -416,6 +467,16 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
         <div class="result-note" id="m-note"></div>
         <div class="result-disclaimer">Estimates only. Does not include PMI, taxes, or insurance. Consult a lender for exact figures.</div>
       </div>
+
+      <div class="seo-box">
+        <h3>US Mortgage Calculator: What You Need to Know</h3>
+        <p>A mortgage is a loan used to purchase real estate, typically repaid over 15 or 30 years. As of 2024, the average 30-year fixed mortgage rate in the US is around 6.5–7.5% (check current rates at Freddie Mac's PMMS). Your monthly payment covers principal (loan balance) and interest, but your actual housing cost also includes property taxes, homeowner's insurance, and possibly PMI (Private Mortgage Insurance, required when down payment is less than 20%).</p>
+        <p>A common rule of thumb: your total housing costs should not exceed 28–30% of your gross monthly income (front-end DTI ratio). Lenders typically require a credit score of 620+ for conventional loans, with better rates for scores above 740. First-time buyers may qualify for FHA loans with as little as 3.5% down.</p>
+        <div class="seo-faq">
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: Should I choose a 15-year or 30-year mortgage?</div><div class="seo-faq-a">A: A 15-year mortgage has higher monthly payments but significantly lower total interest (often 50–60% less). A 30-year mortgage offers lower payments and flexibility. If you can afford the higher payment, 15-year mortgages often make more financial sense long-term.</div></div>
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: What credit score do I need to buy a house?</div><div class="seo-faq-a">A: Conventional loans typically require 620+. FHA loans accept 580+ (with 3.5% down) or 500–579 (with 10% down). VA loans (for veterans) and USDA loans may have no minimum. Higher scores get better rates — a 760+ score can save thousands over the loan term.</div></div>
+        </div>
+      </div>
       <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="4003" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
     </div></div>
   </div>
@@ -446,6 +507,16 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
         </div>
         <div class="result-note" id="k-note"></div>
         <div class="result-disclaimer">Estimates only. Assumes 7% annual return. Consult a financial advisor for personalized advice.</div>
+      </div>
+
+      <div class="seo-box">
+        <h3>401(k) Retirement Savings: Everything You Need to Know</h3>
+        <p>A 401(k) is an employer-sponsored retirement savings plan that allows you to contribute pre-tax dollars, reducing your taxable income today. In 2024, the IRS contribution limit is $23,000 (under 50) or $30,500 (50 and over, with $7,500 catch-up). Employer matching is essentially free money — always contribute at least enough to capture the full match.</p>
+        <p>Traditional 401(k) contributions are tax-deferred (you pay tax when you withdraw in retirement). Roth 401(k) contributions are after-tax (withdrawals in retirement are tax-free). Investments inside a 401(k) grow tax-deferred. The rule of thumb: aim to save 15% of your income for retirement, including employer contributions.</p>
+        <div class="seo-faq">
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: When can I withdraw from my 401(k) without penalty?</div><div class="seo-faq-a">A: You can withdraw without the 10% early withdrawal penalty at age 59½. Required Minimum Distributions (RMDs) must begin at age 73 (as of SECURE 2.0 Act). Early withdrawals are subject to income tax plus the 10% penalty, with some exceptions (hardship, disability, first home purchase up to $10,000 lifetime for IRAs).</div></div>
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: What happens to my 401(k) if I change jobs?</div><div class="seo-faq-a">A: You can leave it with your old employer, roll it over to your new employer's plan, roll it to an IRA, or cash out (not recommended — triggers taxes and penalties). Rolling to an IRA often provides the most investment flexibility.</div></div>
+        </div>
       </div>
       <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="4004" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
     </div></div>
@@ -482,6 +553,16 @@ footer a{color:rgba(255,255,255,.45);text-decoration:none}
         </div>
         <div class="result-note" id="t-note"></div>
         <div class="result-disclaimer">Federal tax only. Does not include state tax, FICA, or Medicare. Consult a CPA for full tax planning.</div>
+      </div>
+
+      <div class="seo-box">
+        <h3>2024 Federal Income Tax: Brackets, Deductions & How It Works</h3>
+        <p>The US uses a progressive tax system — you don't pay your top rate on all income, only on income within each bracket. For 2024, single filers have 7 brackets ranging from 10% to 37%. The standard deduction is $14,600 for single filers and $29,200 for married filing jointly — most Americans take this instead of itemizing.</p>
+        <p>Key deductions and credits to know: 401(k) contributions reduce your taxable income dollar-for-dollar. The Child Tax Credit is up to $2,000 per qualifying child. The Earned Income Tax Credit benefits lower-income workers. Student loan interest deduction (up to $2,500). Homeowners can deduct mortgage interest and property taxes (up to $10,000 SALT cap) if they itemize.</p>
+        <div class="seo-faq">
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: What's the difference between a tax deduction and a tax credit?</div><div class="seo-faq-a">A: A deduction reduces your taxable income (so it saves you your marginal rate × the deduction amount). A credit directly reduces your tax bill dollar-for-dollar — generally more valuable. A $1,000 credit saves exactly $1,000 in taxes; a $1,000 deduction saves $220 if you're in the 22% bracket.</div></div>
+          <div class="seo-faq-item"><div class="seo-faq-q">Q: When is the US tax filing deadline?</div><div class="seo-faq-a">A: April 15 is the standard deadline for federal income tax returns. If you need more time, you can file for a free 6-month extension (to October 15), but any taxes owed are still due by April 15 to avoid interest and penalties.</div></div>
+        </div>
       </div>
       <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="4005" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
     </div></div>
