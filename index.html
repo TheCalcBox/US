@@ -1,0 +1,818 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CalcBox US — Free Health & Finance Calculators</title>
+<meta name="description" content="Free US calculators: BMI, Calorie (TDEE), Water intake, Sleep advisor, Mortgage, Federal Income Tax, 401k retirement. Daily health & finance news.">
+<meta name="keywords" content="BMI calculator,TDEE calculator,mortgage calculator,income tax calculator,401k calculator,US health tools,free calculator">
+<meta name="google-site-verification" content="ndLPqcm96ahzjZOcmJX0ny3eywO74LF7Y3N6_FWm9R0" />
+<style>
+:root{
+  --red:#B91C1C;--red-light:#FEE2E2;--red-mid:#DC2626;
+  --blue:#1D4ED8;--blue-light:#DBEAFE;--blue-mid:#2563EB;
+  --slate:#0F172A;--slate-mid:#1E293B;--slate-light:#F1F5F9;
+  --gray-100:#F3F4F6;--gray-200:#E5E7EB;
+  --text:#0F172A;--muted:#475569;--hint:#94A3B8;
+  --border:#E2E8F0;--border-light:#F1F5F9;
+  --green:#15803D;--green-light:#DCFCE7;
+  --amber:#B45309;--amber-light:#FEF3C7;
+  --white:#fff;
+  --radius:10px;--radius-sm:6px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Arial,sans-serif;background:var(--slate-light);color:var(--text);line-height:1.6;min-height:100vh}
+
+/* ── Header ── */
+header{background:var(--slate);padding:0 1.5rem;position:sticky;top:0;z-index:300}
+.hdr{max-width:800px;margin:0 auto;height:54px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:18px;font-weight:800;color:#fff;text-decoration:none;display:flex;align-items:center;gap:10px;letter-spacing:-.3px}
+.logo-flag{font-size:20px}
+.logo span{color:#EF4444}
+.hdr-tag{font-size:11px;background:rgba(255,255,255,.12);color:#fff;padding:3px 10px;border-radius:20px;font-weight:600;letter-spacing:.04em}
+
+/* ── Stars banner ── */
+.stars-bar{background:linear-gradient(90deg,var(--red-mid),var(--blue-mid));height:4px}
+
+/* ── Cat bar ── */
+.cat-bar{background:var(--white);border-bottom:1px solid var(--border);padding:0 1.5rem;position:sticky;top:54px;z-index:200}
+.cat-inner{max-width:800px;margin:0 auto;display:flex}
+.cat-btn{flex:1;height:48px;font-size:14px;font-weight:700;border:none;background:transparent;cursor:pointer;color:var(--muted);border-bottom:3px solid transparent;transition:all .15s;font-family:inherit;display:flex;align-items:center;justify-content:center;gap:7px;letter-spacing:.01em}
+.cat-btn.active-health{color:var(--green);border-bottom-color:var(--green)}
+.cat-btn.active-finance{color:var(--blue-mid);border-bottom-color:var(--blue-mid)}
+
+/* ── Sub tabs ── */
+.tab-bar{background:var(--slate-light);border-bottom:1px solid var(--border);padding:0 1.5rem;position:sticky;top:102px;z-index:190}
+.tab-inner{max-width:800px;margin:0 auto;display:flex;overflow-x:auto;scrollbar-width:none}
+.tab-inner::-webkit-scrollbar{display:none}
+.tab-btn{flex-shrink:0;padding:0 14px;height:40px;font-size:12px;font-weight:600;border:none;background:transparent;cursor:pointer;color:var(--muted);border-bottom:2px solid transparent;transition:all .15s;font-family:inherit;display:flex;align-items:center;gap:4px;white-space:nowrap;letter-spacing:.02em;text-transform:uppercase}
+.tab-btn.active.h{color:var(--green);border-bottom-color:var(--green)}
+.tab-btn.active.f{color:var(--blue-mid);border-bottom-color:var(--blue-mid)}
+
+/* ── Main ── */
+.wrap{max-width:800px;margin:0 auto;padding:1.5rem 1.5rem 4rem}
+.cat-section{display:none}.cat-section.active{display:block}
+.panel{display:none}.panel.active{display:block}
+
+/* ── Ad ── */
+.ad-slot{width:100%;margin:1.25rem 0 0;background:var(--gray-100);border:1px dashed var(--gray-200);border-radius:var(--radius-sm);min-height:90px;display:flex;align-items:center;justify-content:center}
+.ad-label{font-size:11px;color:var(--hint);padding:1rem;text-align:center}
+
+/* ── Tool card ── */
+.tool-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 1px 3px rgba(0,0,0,.06)}
+.card-head{padding:1.25rem 1.5rem 0}
+.card-head h2{font-size:17px;font-weight:700;margin-bottom:4px;letter-spacing:-.2px}
+.card-head p{font-size:13px;color:var(--muted);margin-bottom:1.25rem;line-height:1.6}
+.card-body{padding:0 1.5rem 1.5rem}
+
+/* ── Form ── */
+.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.fields.one{grid-template-columns:1fr}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:11px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.field input,.field select{height:40px;padding:0 12px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:14px;color:var(--text);background:var(--white);font-family:inherit;-webkit-appearance:none;transition:border .15s}
+#cat-health .field input:focus,#cat-health .field select:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(21,128,61,.1)}
+#cat-finance .field input:focus,#cat-finance .field select:focus{outline:none;border-color:var(--blue-mid);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.calc-btn{width:100%;height:44px;margin-top:4px;font-size:14px;font-weight:700;border:none;border-radius:var(--radius-sm);cursor:pointer;font-family:inherit;letter-spacing:.04em;text-transform:uppercase;transition:opacity .15s,transform .1s;color:var(--white)}
+#cat-health .calc-btn{background:var(--green)}
+#cat-finance .calc-btn{background:var(--blue-mid)}
+.calc-btn:hover{opacity:.88}
+.calc-btn:active{transform:scale(.99)}
+
+/* ── Result ── */
+.result{display:none;margin-top:1.25rem;padding:1.25rem;background:var(--slate-light);border:1px solid var(--border);border-radius:var(--radius-sm)}
+.result.show{display:block}
+.result-top{display:flex;align-items:flex-end;gap:12px;margin-bottom:.75rem}
+.result-number{font-size:38px;font-weight:800;line-height:1;letter-spacing:-.5px}
+#cat-health .result-number{color:var(--green)}
+#cat-finance .result-number{color:var(--blue-mid)}
+.result-unit{font-size:13px;color:var(--muted);padding-bottom:5px}
+.tag{display:inline-block;font-size:11px;font-weight:700;padding:3px 12px;border-radius:4px;margin-bottom:.85rem;letter-spacing:.04em;text-transform:uppercase}
+.tag-green{background:var(--green-light);color:var(--green)}
+.tag-yellow{background:var(--amber-light);color:var(--amber)}
+.tag-red{background:var(--red-light);color:var(--red)}
+.tag-blue{background:var(--blue-light);color:var(--blue)}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:.85rem}
+.result-cell{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 14px}
+.result-cell .lbl{font-size:10px;color:var(--hint);font-weight:700;margin-bottom:2px;text-transform:uppercase;letter-spacing:.05em}
+.result-cell .val{font-size:15px;font-weight:700;color:var(--text)}
+.result-cell .val.red{color:var(--red)}
+.result-cell .val.green{color:var(--green)}
+.result-note{font-size:13px;color:var(--muted);line-height:1.7;padding-top:.75rem;border-top:1px solid var(--border)}
+.result-disclaimer{font-size:11px;color:var(--hint);margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
+
+/* 房貸攤還表 */
+.amort-toggle{font-size:13px;color:var(--blue-mid);cursor:pointer;display:flex;align-items:center;gap:4px;margin-top:.75rem;font-weight:700;background:none;border:none;font-family:inherit;padding:0;text-transform:uppercase;letter-spacing:.03em;font-size:11px}
+.amort-table-wrap{display:none;margin-top:.75rem;overflow-x:auto}
+.amort-table-wrap.show{display:block}
+.amort-table{width:100%;border-collapse:collapse;font-size:12px}
+.amort-table th{background:var(--blue-light);color:var(--blue);font-weight:700;padding:7px 10px;text-align:right;white-space:nowrap;text-transform:uppercase;font-size:10px;letter-spacing:.05em}
+.amort-table th:first-child{text-align:left}
+.amort-table td{padding:6px 10px;border-bottom:1px solid var(--border);text-align:right;color:var(--text)}
+.amort-table td:first-child{text-align:left;color:var(--muted)}
+
+/* ── News ── */
+.news-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
+.news-title{font-size:17px;font-weight:800;letter-spacing:-.3px}
+.news-meta{font-size:12px;color:var(--hint)}
+.refresh-btn{display:flex;align-items:center;gap:6px;padding:7px 14px;font-size:11px;font-weight:700;border:1.5px solid var(--border);border-radius:6px;background:var(--white);cursor:pointer;color:var(--muted);font-family:inherit;transition:all .15s;text-transform:uppercase;letter-spacing:.04em}
+.refresh-btn:hover{border-color:var(--slate);color:var(--slate)}
+.refresh-btn:disabled{opacity:.4;cursor:not-allowed}
+.spin{display:inline-block;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.news-list{display:flex;flex-direction:column;gap:10px}
+.news-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;cursor:pointer;transition:all .15s}
+.news-card:hover{box-shadow:0 4px 12px rgba(0,0,0,.08);border-color:var(--slate-mid)}
+.news-card-inner{display:flex;gap:14px;align-items:flex-start}
+.news-num-h{flex-shrink:0;width:26px;height:26px;border-radius:4px;background:var(--green-light);color:var(--green);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.news-num-f{flex-shrink:0;width:26px;height:26px;border-radius:4px;background:var(--blue-light);color:var(--blue-mid);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.news-content{flex:1;min-width:0}
+.news-src-h{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:5px;background:var(--green-light);color:var(--green);text-transform:uppercase;letter-spacing:.04em}
+.news-src-f{display:inline-block;font-size:10px;font-weight:700;padding:2px 8px;border-radius:4px;margin-bottom:5px;background:var(--blue-light);color:var(--blue-mid);text-transform:uppercase;letter-spacing:.04em}
+.news-headline{font-size:14px;font-weight:700;line-height:1.45;margin-bottom:4px;color:var(--text)}
+.news-summary{font-size:12px;color:var(--muted);line-height:1.6}
+.news-date{font-size:11px;color:var(--hint);margin-top:5px}
+.news-skeleton{display:flex;flex-direction:column;gap:10px}
+.skel-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem}
+.skel-line{height:11px;background:var(--gray-100);border-radius:4px;margin-bottom:8px;animation:pulse 1.4s ease-in-out infinite}
+.skel-line.short{width:35%}.skel-line.mid{width:65%}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.news-error{text-align:center;padding:2.5rem 1rem;color:var(--muted);font-size:13px}
+
+/* ── Footer ── */
+footer{background:var(--slate);padding:1.5rem;text-align:center}
+footer p{font-size:12px;color:rgba(255,255,255,.35);line-height:1.8}
+footer a{color:rgba(255,255,255,.45);text-decoration:none}
+
+@media(max-width:520px){
+  .wrap{padding:1.25rem 1rem 3rem}
+  .fields{grid-template-columns:1fr}
+  .result-grid{grid-template-columns:1fr 1fr}
+  .card-head,.card-body{padding-left:1rem;padding-right:1rem}
+  .tab-btn{padding:0 10px;font-size:10px}
+  .cat-btn{font-size:13px}
+}
+</style>
+</head>
+<body>
+
+<div class="stars-bar"></div>
+<header>
+  <div class="hdr">
+    <a class="logo" href="#"><span class="logo-flag">🇺🇸</span>Calc<span>Box</span> US</a>
+    <span class="hdr-tag">FREE TOOLS</span>
+  </div>
+</header>
+
+<div class="cat-bar">
+  <div class="cat-inner">
+    <button class="cat-btn active-health" onclick="switchCat('health')" id="cat-btn-health">🌿 Health</button>
+    <button class="cat-btn" onclick="switchCat('finance')" id="cat-btn-finance">💰 Finance</button>
+  </div>
+</div>
+
+<div class="tab-bar" id="tabs-health">
+  <div class="tab-inner">
+    <button class="tab-btn active h" onclick="switchTab('h','hnews')"  id="tab-hnews">📰 News</button>
+    <button class="tab-btn h" onclick="switchTab('h','bmi')"    id="tab-bmi">⚖️ BMI</button>
+    <button class="tab-btn h" onclick="switchTab('h','tdee')"   id="tab-tdee">🔥 Calories</button>
+    <button class="tab-btn h" onclick="switchTab('h','water')"  id="tab-water">💧 Hydration</button>
+    <button class="tab-btn h" onclick="switchTab('h','age')"    id="tab-age">🎂 Age</button>
+    <button class="tab-btn h" onclick="switchTab('h','sleep')"  id="tab-sleep">🌙 Sleep</button>
+  </div>
+</div>
+<div class="tab-bar" id="tabs-finance" style="display:none">
+  <div class="tab-inner">
+    <button class="tab-btn active f" onclick="switchTab('f','fnews')"    id="tab-fnews">📈 News</button>
+    <button class="tab-btn f" onclick="switchTab('f','mortgage')" id="tab-mortgage">🏠 Mortgage</button>
+    <button class="tab-btn f" onclick="switchTab('f','k401')"     id="tab-k401">👴 401(k)</button>
+    <button class="tab-btn f" onclick="switchTab('f','tax')"      id="tab-tax">📋 Tax</button>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ════ HEALTH ════ -->
+<div class="cat-section active" id="cat-health">
+
+  <!-- Health News -->
+  <div class="panel active" id="panel-hnews">
+    <div class="news-header">
+      <div><div class="news-title">Daily Health News</div><div class="news-meta" id="hnews-date">Loading...</div></div>
+      <button class="refresh-btn" onclick="loadHealthNews()" id="hrefresh-btn"><span id="hrefresh-icon">↻</span> Refresh</button>
+    </div>
+    <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="3001" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    <div id="hnews-container" style="margin-top:1.25rem"></div>
+    <div class="ad-slot" style="margin-top:1rem"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="3002" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    <p style="font-size:11px;color:var(--hint);text-align:center;margin-top:1rem">For informational purposes only. Consult a healthcare professional.</p>
+  </div>
+
+  <!-- BMI -->
+  <div class="panel" id="panel-bmi">
+    <div class="tool-card"><div class="card-head">
+      <h2>BMI Calculator</h2>
+      <p>Calculate your Body Mass Index using US standard (imperial units). CDC healthy range: 18.5–24.9</p>
+    </div><div class="card-body">
+      <div class="fields">
+        <div class="field"><label>Height (ft)</label><input type="number" id="bmi-ft" placeholder="e.g. 5" inputmode="numeric"></div>
+        <div class="field"><label>Height (in)</label><input type="number" id="bmi-in" placeholder="e.g. 9" inputmode="numeric"></div>
+        <div class="field"><label>Weight (lbs)</label><input type="number" id="bmi-lbs" placeholder="e.g. 160" inputmode="decimal"></div>
+        <div class="field"><label>Age</label><input type="number" id="bmi-age" placeholder="e.g. 30" inputmode="numeric"></div>
+      </div>
+      <button class="calc-btn" onclick="calcBMI()">Calculate BMI</button>
+      <div class="result" id="bmi-result">
+        <div class="result-top"><div class="result-number" id="bmi-num">—</div><div class="result-unit">BMI</div></div>
+        <span class="tag" id="bmi-tag"></span>
+        <div class="result-grid">
+          <div class="result-cell"><div class="lbl">Healthy Weight Range</div><div class="val" id="bmi-ideal">—</div></div>
+          <div class="result-cell"><div class="lbl">From Ideal (mid)</div><div class="val" id="bmi-diff">—</div></div>
+        </div>
+        <div class="result-note" id="bmi-note"></div>
+        <div class="result-disclaimer">For reference only. Consult your doctor for medical advice.</div>
+      </div>
+      <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="3003" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </div></div>
+  </div>
+
+  <!-- TDEE -->
+  <div class="panel" id="panel-tdee">
+    <div class="tool-card"><div class="card-head">
+      <h2>Daily Calorie Calculator (TDEE)</h2>
+      <p>Estimate your Total Daily Energy Expenditure using the Mifflin-St Jeor formula. Includes weight loss & muscle gain targets.</p>
+    </div><div class="card-body">
+      <div class="fields">
+        <div class="field"><label>Height (ft)</label><input type="number" id="tdee-ft" placeholder="e.g. 5" inputmode="numeric"></div>
+        <div class="field"><label>Height (in)</label><input type="number" id="tdee-in" placeholder="e.g. 9" inputmode="numeric"></div>
+        <div class="field"><label>Weight (lbs)</label><input type="number" id="tdee-lbs" placeholder="e.g. 160" inputmode="decimal"></div>
+        <div class="field"><label>Age</label><input type="number" id="tdee-age" placeholder="e.g. 30" inputmode="numeric"></div>
+      </div>
+      <div class="fields">
+        <div class="field"><label>Sex</label><select id="tdee-sex"><option value="m">Male</option><option value="f">Female</option></select></div>
+        <div class="field"><label>Activity Level</label>
+          <select id="tdee-act">
+            <option value="1.2">Sedentary (little/no exercise)</option>
+            <option value="1.375">Light (1–2 days/week)</option>
+            <option value="1.55" selected>Moderate (3–5 days/week)</option>
+            <option value="1.725">Active (6–7 days/week)</option>
+            <option value="1.9">Very Active (hard daily exercise)</option>
+          </select>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcTDEE()">Calculate Calories</button>
+      <div class="result" id="tdee-result">
+        <div class="result-top"><div class="result-number" id="tdee-num">—</div><div class="result-unit">cal / day</div></div>
+        <div class="result-grid">
+          <div class="result-cell"><div class="lbl">BMR</div><div class="val" id="tdee-bmr">—</div></div>
+          <div class="result-cell"><div class="lbl">Protein Goal</div><div class="val" id="tdee-protein">—</div></div>
+          <div class="result-cell"><div class="lbl">Weight Loss Target</div><div class="val" id="tdee-cut">—</div></div>
+          <div class="result-cell"><div class="lbl">Muscle Gain Target</div><div class="val" id="tdee-bulk">—</div></div>
+        </div>
+        <div class="result-note" id="tdee-note"></div>
+        <div class="result-disclaimer">For reference only. Consult a registered dietitian.</div>
+      </div>
+      <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="3004" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </div></div>
+  </div>
+
+  <!-- Water -->
+  <div class="panel" id="panel-water">
+    <div class="tool-card"><div class="card-head">
+      <h2>Daily Water Intake Calculator</h2>
+      <p>Calculate how many ounces of water you should drink daily based on your weight, activity, and climate.</p>
+    </div><div class="card-body">
+      <div class="fields">
+        <div class="field"><label>Weight (lbs)</label><input type="number" id="w-lbs" placeholder="e.g. 160" inputmode="decimal"></div>
+        <div class="field"><label>Exercise Duration</label>
+          <select id="w-sport">
+            <option value="0">No exercise</option>
+            <option value="30">~30 minutes</option>
+            <option value="60">~1 hour</option>
+            <option value="90">1.5+ hours</option>
+          </select>
+        </div>
+      </div>
+      <div class="fields one">
+        <div class="field"><label>Climate</label>
+          <select id="w-climate">
+            <option value="0">Indoor / Air conditioned</option>
+            <option value="8">Mild outdoor weather</option>
+            <option value="16">Hot & humid (summer)</option>
+          </select>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcWater()">Calculate Water Intake</button>
+      <div class="result" id="water-result">
+        <div class="result-top"><div class="result-number" id="water-num">—</div><div class="result-unit">oz / day</div></div>
+        <div class="result-grid">
+          <div class="result-cell"><div class="lbl">In Cups (8 oz)</div><div class="val" id="water-cups">—</div></div>
+          <div class="result-cell"><div class="lbl">In Liters</div><div class="val" id="water-liters">—</div></div>
+        </div>
+        <div class="result-note" id="water-note"></div>
+        <div class="result-disclaimer">For reference only. Consult your doctor if you have kidney concerns.</div>
+      </div>
+      <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="3005" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </div></div>
+  </div>
+
+  <!-- Age -->
+  <div class="panel" id="panel-age">
+    <div class="tool-card"><div class="card-head">
+      <h2>Age Calculator</h2>
+      <p>Calculate your exact age in years, months, and days. Includes next birthday countdown and zodiac sign.</p>
+    </div><div class="card-body">
+      <div class="fields one">
+        <div class="field"><label>Date of Birth</label><input type="date" id="bday"></div>
+      </div>
+      <button class="calc-btn" onclick="calcAge()">Calculate Age</button>
+      <div class="result" id="age-result">
+        <div class="result-top"><div class="result-number" id="age-num">—</div><div class="result-unit">years old</div></div>
+        <div class="result-grid">
+          <div class="result-cell"><div class="lbl">Exact Age</div><div class="val" id="age-exact">—</div></div>
+          <div class="result-cell"><div class="lbl">Next Birthday</div><div class="val" id="age-countdown">—</div></div>
+          <div class="result-cell"><div class="lbl">Zodiac Sign</div><div class="val" id="age-star">—</div></div>
+          <div class="result-cell"><div class="lbl">Days Alive</div><div class="val" id="age-days">—</div></div>
+        </div>
+        <div class="result-note" id="age-note"></div>
+        <div class="result-disclaimer">For reference only.</div>
+      </div>
+      <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="3006" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </div></div>
+  </div>
+
+  <!-- Sleep -->
+  <div class="panel" id="panel-sleep">
+    <div class="tool-card"><div class="card-head">
+      <h2>Sleep Time Calculator</h2>
+      <p>Based on CDC recommendations and 90-minute sleep cycles, find your ideal bedtime for your wake-up time.</p>
+    </div><div class="card-body">
+      <div class="fields">
+        <div class="field"><label>Age</label><input type="number" id="s-age" placeholder="e.g. 30" inputmode="numeric"></div>
+        <div class="field"><label>Wake-up Time</label><input type="time" id="s-wake" value="07:00"></div>
+      </div>
+      <button class="calc-btn" onclick="calcSleep()">Calculate Sleep Time</button>
+      <div class="result" id="sleep-result">
+        <div class="result-top"><div class="result-number" id="sleep-num">—</div><div class="result-unit">hrs recommended</div></div>
+        <div class="result-grid">
+          <div class="result-cell"><div class="lbl">Ideal Bedtime</div><div class="val" id="sleep-bed">—</div></div>
+          <div class="result-cell"><div class="lbl">Sleep Cycles</div><div class="val" id="sleep-cycle">—</div></div>
+        </div>
+        <div class="result-note" id="sleep-note"></div>
+        <div class="result-disclaimer">For reference only. Consult your doctor if you have sleep concerns.</div>
+      </div>
+      <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="3007" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </div></div>
+  </div>
+
+</div><!-- /cat-health -->
+
+<!-- ════ FINANCE ════ -->
+<div class="cat-section" id="cat-finance">
+
+  <!-- Finance News -->
+  <div class="panel active" id="panel-fnews">
+    <div class="news-header">
+      <div><div class="news-title">Daily Finance News</div><div class="news-meta" id="fnews-date">Loading...</div></div>
+      <button class="refresh-btn" onclick="loadFinanceNews()" id="frefresh-btn"><span id="frefresh-icon">↻</span> Refresh</button>
+    </div>
+    <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="4001" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    <div id="fnews-container" style="margin-top:1.25rem"></div>
+    <div class="ad-slot" style="margin-top:1rem"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="4002" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    <p style="font-size:11px;color:var(--hint);text-align:center;margin-top:1rem">For informational purposes only. Not financial advice.</p>
+  </div>
+
+  <!-- Mortgage -->
+  <div class="panel" id="panel-mortgage">
+    <div class="tool-card"><div class="card-head">
+      <h2>US Mortgage Calculator</h2>
+      <p>Calculate monthly payments, total interest, and amortization schedule for your US home loan.</p>
+    </div><div class="card-body">
+      <div class="fields">
+        <div class="field"><label>Home Price ($)</label><input type="number" id="m-price" placeholder="e.g. 400000" inputmode="numeric"></div>
+        <div class="field"><label>Down Payment ($)</label><input type="number" id="m-down" placeholder="e.g. 80000" inputmode="numeric"></div>
+        <div class="field"><label>Annual Rate (%)</label><input type="number" id="m-rate" placeholder="e.g. 6.8" step="0.01" value="6.8" inputmode="decimal"></div>
+        <div class="field"><label>Loan Term</label>
+          <select id="m-years">
+            <option value="10">10 years</option>
+            <option value="15">15 years</option>
+            <option value="20">20 years</option>
+            <option value="30" selected>30 years</option>
+          </select>
+        </div>
+      </div>
+      <button class="calc-btn" onclick="calcMortgage()">Calculate Mortgage</button>
+      <div class="result" id="mortgage-result">
+        <div class="result-top"><div class="result-number" id="m-monthly">—</div><div class="result-unit">/ month</div></div>
+        <span class="tag tag-blue" id="m-tag"></span>
+        <div class="result-grid" style="grid-template-columns:1fr 1fr 1fr">
+          <div class="result-cell"><div class="lbl">Loan Amount</div><div class="val" id="m-loan">—</div></div>
+          <div class="result-cell"><div class="lbl">Total Interest</div><div class="val red" id="m-interest">—</div></div>
+          <div class="result-cell"><div class="lbl">Total Cost</div><div class="val" id="m-total">—</div></div>
+        </div>
+        <button class="amort-toggle" onclick="toggleAmort()">▶ Show Amortization (First 12 Months)</button>
+        <div class="amort-table-wrap" id="amort-wrap">
+          <table class="amort-table"><thead><tr><th>Month</th><th>Payment</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead><tbody id="amort-body"></tbody></table>
+        </div>
+        <div class="result-note" id="m-note"></div>
+        <div class="result-disclaimer">Estimates only. Does not include PMI, taxes, or insurance. Consult a lender for exact figures.</div>
+      </div>
+      <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="4003" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </div></div>
+  </div>
+
+  <!-- 401k -->
+  <div class="panel" id="panel-k401">
+    <div class="tool-card"><div class="card-head">
+      <h2>401(k) Retirement Calculator</h2>
+      <p>Estimate your 401(k) balance at retirement based on your contributions, employer match, and investment growth.</p>
+    </div><div class="card-body">
+      <div class="fields">
+        <div class="field"><label>Current Age</label><input type="number" id="k-age" placeholder="e.g. 35" inputmode="numeric"></div>
+        <div class="field"><label>Retirement Age</label><select id="k-retire"><option value="60">60</option><option value="62">62</option><option value="65" selected>65</option><option value="67">67 (Full)</option><option value="70">70</option></select></div>
+        <div class="field"><label>Annual Salary ($)</label><input type="number" id="k-salary" placeholder="e.g. 75000" inputmode="numeric"></div>
+        <div class="field"><label>Current 401(k) Balance ($)</label><input type="number" id="k-current" placeholder="e.g. 50000" value="0" inputmode="numeric"></div>
+        <div class="field"><label>Your Contribution (%)</label><input type="number" id="k-contrib" placeholder="e.g. 6" value="6" inputmode="decimal"></div>
+        <div class="field"><label>Employer Match (%)</label><input type="number" id="k-match" placeholder="e.g. 3" value="3" inputmode="decimal"></div>
+      </div>
+      <button class="calc-btn" onclick="calcK401()">Calculate 401(k)</button>
+      <div class="result" id="k401-result">
+        <div class="result-top"><div class="result-number" id="k-balance">—</div><div class="result-unit">at retirement</div></div>
+        <span class="tag tag-blue" id="k-tag"></span>
+        <div class="result-grid">
+          <div class="result-cell"><div class="lbl">Monthly Income (25yr)</div><div class="val green" id="k-monthly">—</div></div>
+          <div class="result-cell"><div class="lbl">Years to Retirement</div><div class="val" id="k-years">—</div></div>
+          <div class="result-cell"><div class="lbl">Your Total Contributions</div><div class="val" id="k-yourcontrib">—</div></div>
+          <div class="result-cell"><div class="lbl">Employer Total Match</div><div class="val green" id="k-employermatch">—</div></div>
+        </div>
+        <div class="result-note" id="k-note"></div>
+        <div class="result-disclaimer">Estimates only. Assumes 7% annual return. Consult a financial advisor for personalized advice.</div>
+      </div>
+      <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="4004" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </div></div>
+  </div>
+
+  <!-- Federal Tax -->
+  <div class="panel" id="panel-tax">
+    <div class="tool-card"><div class="card-head">
+      <h2>Federal Income Tax Calculator</h2>
+      <p>Estimate your 2024 US federal income tax based on IRS tax brackets, filing status, and standard deduction.</p>
+    </div><div class="card-body">
+      <div class="fields">
+        <div class="field"><label>Gross Annual Income ($)</label><input type="number" id="t-income" placeholder="e.g. 75000" inputmode="numeric"></div>
+        <div class="field"><label>Filing Status</label>
+          <select id="t-status">
+            <option value="single">Single</option>
+            <option value="married_joint">Married Filing Jointly</option>
+            <option value="married_separate">Married Filing Separately</option>
+            <option value="head">Head of Household</option>
+          </select>
+        </div>
+        <div class="field"><label>401(k) Contribution ($)</label><input type="number" id="t-401k" placeholder="e.g. 4500" value="0" inputmode="numeric"></div>
+        <div class="field"><label>Other Pre-Tax Deductions ($)</label><input type="number" id="t-pretax" placeholder="e.g. 2400" value="0" inputmode="numeric"></div>
+      </div>
+      <button class="calc-btn" onclick="calcTax()">Calculate Tax</button>
+      <div class="result" id="tax-result">
+        <div class="result-top"><div class="result-number" id="t-tax">—</div><div class="result-unit">federal tax</div></div>
+        <span class="tag" id="t-tag"></span>
+        <div class="result-grid">
+          <div class="result-cell"><div class="lbl">Taxable Income</div><div class="val" id="t-taxable">—</div></div>
+          <div class="result-cell"><div class="lbl">Marginal Rate</div><div class="val" id="t-rate">—</div></div>
+          <div class="result-cell"><div class="lbl">Effective Rate</div><div class="val" id="t-eff">—</div></div>
+          <div class="result-cell"><div class="lbl">Take-Home Pay</div><div class="val green" id="t-takehome">—</div></div>
+        </div>
+        <div class="result-note" id="t-note"></div>
+        <div class="result-disclaimer">Federal tax only. Does not include state tax, FICA, or Medicare. Consult a CPA for full tax planning.</div>
+      </div>
+      <div class="ad-slot"><ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9509448455103495" data-ad-slot="4005" data-ad-format="auto" data-full-width-responsive="true"></ins><script>(adsbygoogle=window.adsbygoogle||[]).push({});</script></div>
+    </div></div>
+  </div>
+
+</div><!-- /cat-finance -->
+</div><!-- /wrap -->
+
+<footer>
+  <p>CalcBox US &nbsp;·&nbsp; For informational purposes only. Not medical or financial advice.<br>
+  <a href="#">Privacy Policy</a> &nbsp;·&nbsp; <a href="#">Contact</a> &nbsp;·&nbsp;
+  <a href="https://thecalcbox.github.io">🇹🇼 Taiwan Version</a></p>
+</footer>
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9509448455103495" crossorigin="anonymous"></script>
+
+<script>
+const RSS_PROXY='https://rss-proxy.alonsolu0204.workers.dev';
+const SKEL=`<div class="skel-card"><div class="skel-line short"></div><div class="skel-line mid"></div><div class="skel-line"></div><div class="skel-line mid"></div></div>`;
+let hnewsLoaded=false,fnewsLoaded=false,amortData=[];
+
+/* ══ Cat switch ══ */
+function switchCat(cat){
+  document.querySelectorAll('.cat-section').forEach(s=>s.classList.remove('active'));
+  document.getElementById('cat-'+cat).classList.add('active');
+  document.getElementById('tabs-health').style.display=cat==='health'?'block':'none';
+  document.getElementById('tabs-finance').style.display=cat==='finance'?'block':'none';
+  document.getElementById('cat-btn-health').className='cat-btn'+(cat==='health'?' active-health':'');
+  document.getElementById('cat-btn-finance').className='cat-btn'+(cat==='finance'?' active-finance':'');
+  if(cat==='finance'&&!fnewsLoaded) loadFinanceNews();
+}
+
+/* ══ Tab switch ══ */
+function switchTab(cat,id){
+  const sec=cat==='h'?'cat-health':'cat-finance';
+  document.querySelectorAll('#'+sec+' .panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll(cat==='h'?'#tabs-health .tab-btn':'#tabs-finance .tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('panel-'+id).classList.add('active');
+  document.getElementById('tab-'+id).classList.add('active');
+  if(id==='hnews'&&!hnewsLoaded) loadHealthNews();
+  if(id==='fnews'&&!fnewsLoaded) loadFinanceNews();
+}
+
+/* ══ News ══ */
+async function loadHealthNews(){
+  await fetchRSS(
+    'https://feeds.feedburner.com/WebMD',
+    'hnews-container','hnews-date','hrefresh-btn','hrefresh-icon',
+    'WebMD','news-num-h','news-src-h'
+  );
+  hnewsLoaded=true;
+}
+async function loadFinanceNews(){
+  await fetchRSS(
+    'https://feeds.feedburner.com/nasdaq/ineW',
+    'fnews-container','fnews-date','frefresh-btn','frefresh-icon',
+    'NASDAQ','news-num-f','news-src-f'
+  );
+  fnewsLoaded=true;
+}
+
+async function fetchRSS(rssUrl,containerId,dateId,btnId,iconId,sourceName,numClass,tagClass){
+  const btn=document.getElementById(btnId);
+  const icon=document.getElementById(iconId);
+  const container=document.getElementById(containerId);
+  btn.disabled=true; icon.className='spin'; icon.textContent='↻';
+  container.innerHTML=`<div class="news-skeleton">${SKEL.repeat(5)}</div>`;
+  const today=new Date();
+  document.getElementById(dateId).textContent=today.toLocaleDateString('en-US',{weekday:'long',year:'numeric',month:'long',day:'numeric'})+' Update';
+  try{
+    const res=await fetch(`${RSS_PROXY}?url=${encodeURIComponent(rssUrl)}`);
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    const xml=new DOMParser().parseFromString(await res.text(),'application/xml');
+    let items=Array.from(xml.querySelectorAll('item'));
+    if(!items.length) items=Array.from(xml.getElementsByTagName('item'));
+    items=items.slice(0,8);
+    if(!items.length) throw new Error('no items');
+    let html='<div class="news-list">';
+    items.forEach((item,i)=>{
+      const title=(item.querySelector('title')||item.getElementsByTagName('title')[0])?.textContent?.trim()||'No title';
+      const descEl=item.querySelector('description')||item.getElementsByTagName('description')[0];
+      const desc=(descEl?.textContent||'').replace(/<[^>]+>/g,'').trim().slice(0,100);
+      const pubDate=(item.querySelector('pubDate')||item.getElementsByTagName('pubDate')[0])?.textContent?.trim()||'';
+      const dateStr=pubDate?new Date(pubDate).toLocaleDateString('en-US',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):'';
+      let link='#';
+      const linkEl=item.getElementsByTagName('link')[0];
+      if(linkEl){link=linkEl.textContent?.trim()||'#';}
+      if(!link||link==='#'){const guid=item.querySelector('guid')||item.getElementsByTagName('guid')[0];if(guid?.getAttribute('isPermaLink')!=='false')link=guid?.textContent?.trim()||'#';}
+      html+=`<div class="news-card" onclick="window.open('${link}','_blank')">
+        <div class="news-card-inner">
+          <div class="${numClass}">${i+1}</div>
+          <div class="news-content">
+            <span class="${tagClass}">${sourceName}</span>
+            <div class="news-headline">${title}</div>
+            ${desc?`<div class="news-summary">${desc}...</div>`:''}
+            ${dateStr?`<div class="news-date">🕐 ${dateStr}</div>`:''}
+          </div>
+        </div>
+      </div>`;
+    });
+    container.innerHTML=html+'</div>';
+  }catch(e){
+    container.innerHTML=`<div class="news-error">📡 Failed to load news. Please refresh.<br><small>${e.message}</small></div>`;
+  }
+  btn.disabled=false; icon.className=''; icon.textContent='↻';
+}
+
+/* ══ BMI (Imperial) ══ */
+function calcBMI(){
+  const ft=parseFloat(document.getElementById('bmi-ft').value)||0;
+  const inch=parseFloat(document.getElementById('bmi-in').value)||0;
+  const lbs=parseFloat(document.getElementById('bmi-lbs').value);
+  if(!lbs||(!ft&&!inch)){alert('Please enter height and weight');return;}
+  const totalInches=ft*12+inch;
+  const bmi=(703*lbs)/(totalInches*totalInches);
+  document.getElementById('bmi-num').textContent=bmi.toFixed(1);
+  const tag=document.getElementById('bmi-tag');
+  let cat,cls;
+  if(bmi<18.5){cat='UNDERWEIGHT';cls='tag-blue';}
+  else if(bmi<25){cat='HEALTHY WEIGHT ✓';cls='tag-green';}
+  else if(bmi<30){cat='OVERWEIGHT';cls='tag-yellow';}
+  else{cat='OBESE';cls='tag-red';}
+  tag.textContent=cat;tag.className='tag '+cls;
+  const loLbs=(18.5*totalInches*totalInches/703).toFixed(0);
+  const hiLbs=(24.9*totalInches*totalInches/703).toFixed(0);
+  document.getElementById('bmi-ideal').textContent=loLbs+'–'+hiLbs+' lbs';
+  const mid=(parseFloat(loLbs)+parseFloat(hiLbs))/2;
+  const diff=(lbs-mid).toFixed(0);
+  document.getElementById('bmi-diff').textContent=(diff>0?'+':'')+diff+' lbs';
+  const notes={'tag-blue':'Underweight may affect immune function and bone density. Focus on nutrient-dense foods and strength training.','tag-green':'Great! Your weight is in the CDC healthy range. Maintain with balanced nutrition and 150 min/week moderate exercise.','tag-yellow':'Slightly overweight. A modest calorie reduction of 300–500 cal/day plus cardio can safely reduce 0.5–1 lb per week.','tag-red':'Consult your doctor to develop a safe, sustainable weight loss plan.'};
+  document.getElementById('bmi-note').textContent=notes[cls];
+  document.getElementById('bmi-result').classList.add('show');
+}
+
+/* ══ TDEE (Imperial) ══ */
+function calcTDEE(){
+  const ft=parseFloat(document.getElementById('tdee-ft').value)||0;
+  const inch=parseFloat(document.getElementById('tdee-in').value)||0;
+  const lbs=parseFloat(document.getElementById('tdee-lbs').value);
+  const age=parseFloat(document.getElementById('tdee-age').value);
+  const sex=document.getElementById('tdee-sex').value;
+  const act=parseFloat(document.getElementById('tdee-act').value);
+  if(!lbs||!age||(!ft&&!inch)){alert('Please fill in all fields');return;}
+  const kg=lbs*0.453592;
+  const cm=(ft*12+inch)*2.54;
+  const bmr=sex==='m'?(10*kg)+(6.25*cm)-(5*age)+5:(10*kg)+(6.25*cm)-(5*age)-161;
+  const tdee=Math.round(bmr*act);
+  document.getElementById('tdee-num').textContent=tdee.toLocaleString();
+  document.getElementById('tdee-bmr').textContent=Math.round(bmr).toLocaleString()+' cal';
+  document.getElementById('tdee-cut').textContent=Math.round(tdee*0.8).toLocaleString()+' cal';
+  document.getElementById('tdee-bulk').textContent=Math.round(tdee*1.1).toLocaleString()+' cal';
+  const proteinG=Math.round(kg*1.6);
+  document.getElementById('tdee-protein').textContent=proteinG+'–'+Math.round(kg*2.0)+' g';
+  document.getElementById('tdee-note').textContent='Weight loss: eat ~'+Math.round(tdee*0.8).toLocaleString()+' cal/day ('+Math.round(tdee*0.2).toLocaleString()+' cal deficit). Expect ~0.5–1 lb loss per week. Muscle gain: eat ~'+Math.round(tdee*1.1).toLocaleString()+' cal/day with resistance training. Aim for '+proteinG+'+ g protein daily.';
+  document.getElementById('tdee-result').classList.add('show');
+}
+
+/* ══ Water (Imperial) ══ */
+function calcWater(){
+  const lbs=parseFloat(document.getElementById('w-lbs').value);
+  if(!lbs||lbs<50){alert('Please enter a valid weight');return;}
+  const sport=parseInt(document.getElementById('w-sport').value);
+  const climate=parseInt(document.getElementById('w-climate').value);
+  const base=Math.round(lbs*0.5);
+  const total=base+(sport/3)+climate;
+  document.getElementById('water-num').textContent=Math.round(total);
+  document.getElementById('water-cups').textContent=Math.round(total/8)+' cups';
+  document.getElementById('water-liters').textContent=(total*0.0296).toFixed(1)+' L';
+  document.getElementById('water-note').textContent='Spread intake throughout the day: drink a glass when you wake up, before each meal, and during/after exercise. Dark yellow urine signals dehydration. Your kidneys can process ~27 oz/hour max — avoid drinking too much at once.';
+  document.getElementById('water-result').classList.add('show');
+}
+
+/* ══ Age ══ */
+function calcAge(){
+  const bdVal=document.getElementById('bday').value;
+  if(!bdVal){alert('Please select your date of birth');return;}
+  const b=new Date(bdVal),n=new Date();
+  if(b>n){alert('Date of birth cannot be in the future');return;}
+  let yrs=n.getFullYear()-b.getFullYear(),mos=n.getMonth()-b.getMonth(),days=n.getDate()-b.getDate();
+  if(days<0){mos--;days+=30;} if(mos<0){yrs--;mos+=12;}
+  document.getElementById('age-num').textContent=yrs;
+  document.getElementById('age-exact').textContent=yrs+' yrs '+mos+' mo '+days+' days';
+  const sc=[20,19,21,20,21,21,23,23,23,23,22,22];
+  const sn=['Capricorn','Aquarius','Pisces','Aries','Taurus','Gemini','Cancer','Leo','Virgo','Libra','Scorpio','Sagittarius'];
+  const m=b.getMonth(),d=b.getDate();
+  document.getElementById('age-star').textContent=d>=sc[m]?sn[(m+1)%12]:sn[m];
+  const next=new Date(n.getFullYear(),b.getMonth(),b.getDate());
+  if(next<=n) next.setFullYear(n.getFullYear()+1);
+  const daysLeft=Math.ceil((next-n)/86400000);
+  document.getElementById('age-countdown').textContent='in '+daysLeft+' days';
+  const totalDays=Math.floor((n-b)/86400000);
+  document.getElementById('age-days').textContent=totalDays.toLocaleString()+' days';
+  document.getElementById('age-note').textContent='You have lived '+totalDays.toLocaleString()+' days. Your next birthday is '+next.toLocaleDateString('en-US',{month:'long',day:'numeric',year:'numeric'})+'.';
+  document.getElementById('age-result').classList.add('show');
+}
+
+/* ══ Sleep ══ */
+function calcSleep(){
+  const age=parseInt(document.getElementById('s-age').value);
+  const wake=document.getElementById('s-wake').value;
+  if(!age||!wake){alert('Please enter age and wake-up time');return;}
+  const table=[[2,11,14],[5,10,13],[13,9,11],[17,8,10],[64,7,9],[120,7,8]];
+  let recMin=7,recMax=9;
+  for(const[maxAge,mn,mx]of table){if(age<=maxAge){recMin=mn;recMax=mx;break;}}
+  const cycles=Math.round((recMin+recMax)/2/1.5);
+  const[wh,wm]=wake.split(':').map(Number);
+  const bedMins=(((wh*60+wm)-cycles*90)%1440+1440)%1440;
+  const bh=Math.floor(bedMins/60),bm=bedMins%60;
+  const fmt=t=>(t<10?'0':'')+t;
+  const ampm=bh>=12?'PM':'AM';
+  const h12=bh%12||12;
+  document.getElementById('sleep-num').textContent=recMin+'–'+recMax;
+  document.getElementById('sleep-bed').textContent=h12+':'+fmt(bm)+' '+ampm;
+  document.getElementById('sleep-cycle').textContent=cycles+' cycles (90 min each)';
+  document.getElementById('sleep-note').textContent='Each sleep cycle is ~90 minutes covering light sleep, deep sleep, and REM. Waking at the end of a cycle feels most refreshing. Tips: avoid screens 1hr before bed, keep your room at 65–68°F, and cut caffeine 6hrs before sleep.';
+  document.getElementById('sleep-result').classList.add('show');
+}
+
+/* ══ Mortgage (US) ══ */
+function calcMortgage(){
+  const price=parseFloat(document.getElementById('m-price').value);
+  const down=parseFloat(document.getElementById('m-down').value)||0;
+  const rate=parseFloat(document.getElementById('m-rate').value)/100/12;
+  const years=parseInt(document.getElementById('m-years').value);
+  if(!price||!rate||!years){alert('Please fill in all fields');return;}
+  const loan=price-down;
+  if(loan<=0){alert('Down payment cannot exceed home price');return;}
+  const n=years*12;
+  const monthly=loan*rate*Math.pow(1+rate,n)/(Math.pow(1+rate,n)-1);
+  let balance=loan,totalInterest=0; amortData=[];
+  for(let i=1;i<=n;i++){
+    const interest=balance*rate;
+    const principal=monthly-interest;
+    balance-=principal; totalInterest+=interest;
+    amortData.push({month:i,payment:monthly,principal,interest,balance:Math.max(0,balance)});
+  }
+  const fmt=v=>'$'+Math.round(v).toLocaleString();
+  document.getElementById('m-monthly').textContent='$'+Math.round(monthly).toLocaleString();
+  document.getElementById('m-tag').textContent=years+'-Year Fixed · '+document.getElementById('m-rate').value+'% APR';
+  document.getElementById('m-loan').textContent=fmt(loan);
+  document.getElementById('m-interest').textContent=fmt(totalInterest);
+  document.getElementById('m-total').textContent=fmt(loan+totalInterest+down);
+  document.getElementById('m-note').textContent=`Loan: ${fmt(loan)} at ${document.getElementById('m-rate').value}% for ${years} years. Total interest: ${fmt(totalInterest)} (${(totalInterest/loan*100).toFixed(0)}% of loan amount). Monthly payment does not include property tax, homeowner's insurance, or PMI.`;
+  document.getElementById('amort-body').innerHTML=amortData.slice(0,12).map(r=>`<tr><td>Month ${r.month}</td><td>${fmt(r.payment)}</td><td>${fmt(r.principal)}</td><td>${fmt(r.interest)}</td><td>${fmt(r.balance)}</td></tr>`).join('');
+  document.getElementById('mortgage-result').classList.add('show');
+}
+function toggleAmort(){
+  const wrap=document.getElementById('amort-wrap');
+  const show=wrap.classList.toggle('show');
+  document.querySelector('.amort-toggle').textContent=(show?'▼':'▶')+' '+(show?'Hide':'Show')+' Amortization (First 12 Months)';
+}
+
+/* ══ 401(k) ══ */
+function calcK401(){
+  const age=parseInt(document.getElementById('k-age').value);
+  const retireAge=parseInt(document.getElementById('k-retire').value);
+  const salary=parseFloat(document.getElementById('k-salary').value);
+  const current=parseFloat(document.getElementById('k-current').value)||0;
+  const contrib=parseFloat(document.getElementById('k-contrib').value)/100;
+  const match=parseFloat(document.getElementById('k-match').value)/100;
+  if(!age||!salary){alert('Please fill in required fields');return;}
+  if(age>=retireAge){alert('Current age must be less than retirement age');return;}
+  const years=retireAge-age;
+  const annualContrib=salary*(contrib+match);
+  const r=0.07;
+  // FV of current balance
+  const fvCurrent=current*Math.pow(1+r,years);
+  // FV of annual contributions
+  const fvContribs=annualContrib*((Math.pow(1+r,years)-1)/r);
+  const total=Math.round(fvCurrent+fvContribs);
+  const monthlyIncome=Math.round(total/300); // 25 years = 300 months
+  const yourTotal=Math.round(salary*contrib*years);
+  const matchTotal=Math.round(salary*match*years);
+  let level,cls;
+  if(total<500000){level='BELOW TARGET';cls='tag-yellow';}
+  else if(total<1000000){level='ON TRACK';cls='tag-blue';}
+  else{level='GREAT SAVINGS ✓';cls='tag-green';}
+  document.getElementById('k-balance').textContent='$'+Math.round(total/1000)+'K';
+  document.getElementById('k-tag').textContent=level;
+  document.getElementById('k-tag').className='tag '+cls;
+  document.getElementById('k-monthly').textContent='$'+monthlyIncome.toLocaleString()+'/mo';
+  document.getElementById('k-years').textContent=years+' years';
+  document.getElementById('k-yourcontrib').textContent='$'+yourTotal.toLocaleString();
+  document.getElementById('k-employermatch').textContent='$'+matchTotal.toLocaleString();
+  document.getElementById('k-note').textContent=`With ${years} years of contributions at a ${(contrib*100).toFixed(0)}% personal + ${(match*100).toFixed(0)}% employer match on a $${salary.toLocaleString()} salary, your estimated 401(k) balance at age ${retireAge} is $${total.toLocaleString()}. ${match>0?'Always contribute enough to get the full employer match — it\'s free money!':'Consider contributing more to maximize tax-deferred growth.'}`;
+  document.getElementById('k401-result').classList.add('show');
+}
+
+/* ══ Federal Income Tax (2024) ══ */
+function calcTax(){
+  const income=parseFloat(document.getElementById('t-income').value);
+  const status=document.getElementById('t-status').value;
+  const k401=parseFloat(document.getElementById('t-401k').value)||0;
+  const pretax=parseFloat(document.getElementById('t-pretax').value)||0;
+  if(!income){alert('Please enter your gross income');return;}
+  // 2024 Standard deductions
+  const stdDeduct={single:14600,married_joint:29200,married_separate:14600,head:21900};
+  const deduct=stdDeduct[status]||14600;
+  const taxable=Math.max(0,income-k401-pretax-deduct);
+  // 2024 Tax brackets
+  const brackets={
+    single:[[11600,.10,0],[47150,.12,1160],[100525,.22,5426],[191950,.24,17168.5],[243725,.32,39110.5],[609350,.35,55364.5],[Infinity,.37,183647]],
+    married_joint:[[23200,.10,0],[94300,.12,2320],[201050,.22,13852],[383900,.24,34337],[487450,.32,78221],[731200,.35,111257],[Infinity,.37,196669.5]],
+    married_separate:[[11600,.10,0],[47150,.12,1160],[100525,.22,5426],[191950,.24,17168.5],[243725,.32,39110.5],[365600,.35,55364.5],[Infinity,.37,98334.75]],
+    head:[[16550,.10,0],[63100,.12,1655],[100500,.22,6897],[191950,.24,15213.5],[243700,.32,35791.5],[609350,.35,51371.5],[Infinity,.37,178631.5]]
+  };
+  const bkts=brackets[status]||brackets.single;
+  let tax=0,rate=0;
+  for(const[limit,r,base]of bkts){
+    if(taxable<=limit){tax=Math.round(base+(taxable-(bkts[bkts.indexOf([limit,r,base])-1]?.[0]||0))*r);rate=r;break;}
+  }
+  tax=Math.max(0,tax);
+  const effRate=income>0?(tax/income*100).toFixed(1):0;
+  const takehome=Math.round(income-tax-k401-pretax);
+  let level,cls;
+  if(rate<=0.12){level=(rate*100)+'% BRACKET';cls='tag-green';}
+  else if(rate<=0.22){level=(rate*100)+'% BRACKET';cls='tag-blue';}
+  else{level=(rate*100)+'% BRACKET';cls='tag-yellow';}
+  document.getElementById('t-tax').textContent='$'+tax.toLocaleString();
+  document.getElementById('t-tag').textContent=level;
+  document.getElementById('t-tag').className='tag '+cls;
+  document.getElementById('t-taxable').textContent='$'+taxable.toLocaleString();
+  document.getElementById('t-rate').textContent=(rate*100)+'%';
+  document.getElementById('t-eff').textContent=effRate+'%';
+  document.getElementById('t-takehome').textContent='$'+takehome.toLocaleString();
+  document.getElementById('t-note').textContent=`Gross income: $${income.toLocaleString()}. After standard deduction ($${deduct.toLocaleString()}) and pre-tax contributions ($${(k401+pretax).toLocaleString()}), taxable income is $${taxable.toLocaleString()}. Federal tax: $${tax.toLocaleString()} (${effRate}% effective rate). Estimated take-home: $${takehome.toLocaleString()} ($${Math.round(takehome/12).toLocaleString()}/month).`;
+  document.getElementById('tax-result').classList.add('show');
+}
+
+/* ══ Add feedburner domains to Worker ══ */
+window.addEventListener('load',()=>loadHealthNews());
+</script>
+</body>
+</html>
