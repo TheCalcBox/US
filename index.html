@@ -528,17 +528,17 @@ function switchTab(cat,id){
 /* ══ News ══ */
 async function loadHealthNews(){
   await fetchRSS(
-    'https://feeds.feedburner.com/WebMD',
+    'https://tools.cdc.gov/api/v2/resources/media/132608.rss',
     'hnews-container','hnews-date','hrefresh-btn','hrefresh-icon',
-    'WebMD','news-num-h','news-src-h'
+    'CDC Health','news-num-h','news-src-h'
   );
   hnewsLoaded=true;
 }
 async function loadFinanceNews(){
   await fetchRSS(
-    'https://feeds.feedburner.com/nasdaq/ineW',
+    'https://feeds.content.dowjones.io/public/rss/mw_realtimeheadlines',
     'fnews-container','fnews-date','frefresh-btn','frefresh-icon',
-    'NASDAQ','news-num-f','news-src-f'
+    'MarketWatch','news-num-f','news-src-f'
   );
   fnewsLoaded=true;
 }
